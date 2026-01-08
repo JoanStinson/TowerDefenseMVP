@@ -12,7 +12,8 @@ namespace JGM.Gameplay.Creeps
 
         public void Spawn()
         {
-            var spawnedCreep = Instantiate(creepPrefab, spawnPoints[1], false);
+            var spawnedCreep = Instantiate(creepPrefab, transform, false);
+            spawnedCreep.transform.position = spawnPoints[0].position;
             var creepModel = new CreepModel(target, 5f, 5f, playerBase, 1f);
             spawnedCreep.Initialize(creepModel);
         }

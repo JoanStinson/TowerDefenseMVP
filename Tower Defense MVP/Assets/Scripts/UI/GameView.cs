@@ -7,7 +7,8 @@ namespace JGM.UI
     public class GameView : MonoBehaviour
     {
         [SerializeField] private GameController gameController;
-        [SerializeField] private GameObject hud;
+        [SerializeField] private GameObject topPanel;
+        [SerializeField] private GameObject bottomPanel;
         [SerializeField] private GameObject losePopup;
         [SerializeField] private GameObject winPopup;
         [SerializeField] private PlayerBase playerBase;
@@ -20,7 +21,8 @@ namespace JGM.UI
 
         private void OnGameStart()
         {
-            hud.SetActive(true);
+            topPanel.SetActive(true);
+            bottomPanel.SetActive(true);
             losePopup.SetActive(false);
             winPopup.SetActive(false);
         }

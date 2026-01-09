@@ -221,9 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5ba60ef83e734439d0e3bd5d356a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - {fileID: 11400000, guid: 942962829c5c6224d9474eeea709e062, type: 2}
-  - {fileID: 11400000, guid: 500fee9a050cdc2449e434dd7b138853, type: 2}
+  wavesList: {fileID: 11400000, guid: 7898fa757a07baa4196cb14532ee4154, type: 2}
   creepSpawner: {fileID: 122888830}
 --- !u!1001 &266367351
 PrefabInstance:

@@ -1,4 +1,5 @@
 ﻿using JGM.Gameplay.Base;
+using System.Collections;
 using UnityEngine;
 
 namespace JGM.Gameplay.Creeps
@@ -10,12 +11,25 @@ namespace JGM.Gameplay.Creeps
         [SerializeField] private Transform target;
         [SerializeField] private PlayerBase playerBase;
 
+        private int maxCreeps = 5;
+        private int delayBetweenCreeps = 2;
+
         public void Spawn()
         {
-            var spawnedCreep = Instantiate(creepPrefab, transform, false);
-            spawnedCreep.transform.position = spawnPoints[0].position;
-            var creepModel = new CreepModel(target, 5f, 5f, playerBase, 1f);
-            spawnedCreep.Initialize(creepModel);
+            StartCoroutine(SpawnCreeps());
+        }
+
+        private IEnumerator SpawnCreeps()
+        {
+            for (int i = 0; i < maxCreeps; i++)
+            {
+                var spawnedCreep = Instantiate(creepPrefab, transform, false);
+                int randomSpawnPoint = Random.Range(0, spawnPoints.Length - 1);
+                spawnedCreep.transform.position = spawnPoints[randomSpawnPoint].position;
+                var creepModel = new CreepModel(target, 5f, 5f, playerBase, 1f);
+                spawnedCreep.Initialize(creepModel);
+                yield return new WaitForSeconds(delayBetweenCreeps);
+            }
         }
     }
 }

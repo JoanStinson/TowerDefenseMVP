@@ -1,4 +1,4 @@
-﻿using JGM.Gameplay.Creeps;
+﻿using JGM.Gameplay.Waves;
 using System;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ namespace JGM.Gameplay
         public event Action OnGameStarted;
 
         [SerializeField]
-        private CreepSpawner creepSpawner;
+        private WavesController wavesController;
 
         private void Start()
         {
@@ -18,7 +18,7 @@ namespace JGM.Gameplay
 
         private void StartGame()
         {
-            creepSpawner.Spawn();
+            wavesController.StartGame();
             OnGameStarted?.Invoke();
         }
     }

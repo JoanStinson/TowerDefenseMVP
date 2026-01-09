@@ -1,5 +1,7 @@
 using JGM.Gameplay;
 using JGM.Gameplay.Base;
+using JGM.Gameplay.Waves;
+using System;
 using UnityEngine;
 
 namespace JGM.UI
@@ -12,11 +14,13 @@ namespace JGM.UI
         [SerializeField] private GameObject losePopup;
         [SerializeField] private GameObject winPopup;
         [SerializeField] private PlayerBase playerBase;
+        [SerializeField] private WavesController wavesController;
 
         private void Awake()
         {
             gameController.OnGameStarted += OnGameStart;
             playerBase.OnHealthDecreased += OnHealthDecrease;
+            wavesController.OnAllWavesComplete += OnAllWavesComplete;
         }
 
         private void OnGameStart()
@@ -33,6 +37,11 @@ namespace JGM.UI
             {
                 losePopup.SetActive(true);
             }
+        }
+
+        private void OnAllWavesComplete()
+        {
+            winPopup.SetActive(true);
         }
     }
 }

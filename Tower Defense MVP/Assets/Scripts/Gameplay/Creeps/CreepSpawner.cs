@@ -18,17 +18,18 @@ namespace JGM.Gameplay.Creeps
 
         public List<Creep> activeCreeps = new();
 
-        private int maxCreeps = 5;
         private int delayBetweenCreeps = 2;
 
-        public void Spawn()
+        public event Action OnAllCreepsKilled;
+
+        public void Spawn(int creepsCount)
         {
-            StartCoroutine(SpawnCreeps());
+            StartCoroutine(SpawnCreeps(creepsCount));
         }
 
-        private IEnumerator SpawnCreeps()
+        private IEnumerator SpawnCreeps(int creepsCount)
         {
-            for (int i = 0; i < maxCreeps; i++)
+            for (int i = 0; i < creepsCount; i++)
             {
                 var spawnedCreep = Instantiate(creepPrefab, transform, false);
                 int randomSpawnPoint = Random.Range(0, spawnPoints.Length - 1);
@@ -44,6 +45,11 @@ namespace JGM.Gameplay.Creeps
         {
             activeCreeps.Remove(creep);
             OnCreepKilled?.Invoke();
+
+            if (activeCreeps.Count == 0)
+            {
+                OnAllCreepsKilled?.Invoke();
+            }
         }
     }
 }

@@ -30,10 +30,15 @@ namespace JGM.Gameplay.Creeps
                 int randomSpawnPoint = Random.Range(0, spawnPoints.Length - 1);
                 spawnedCreep.transform.position = spawnPoints[randomSpawnPoint].position;
                 var creepModel = new CreepModel(target, 5f, 5f, playerBase, 1f);
-                spawnedCreep.Initialize(creepModel);
+                spawnedCreep.Initialize(creepModel, this);
                 activeCreeps.Add(spawnedCreep);
                 yield return new WaitForSeconds(delayBetweenCreeps);
             }
+        }
+
+        public void RemoveActiveCreep(Creep creep)
+        {
+            activeCreeps.Remove(creep);
         }
     }
 }

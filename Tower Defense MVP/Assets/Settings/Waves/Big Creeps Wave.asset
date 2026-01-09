@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6727871bb571bf4983765bc3a8c8151, type: 3}
-  m_Name: Wave 1
+  m_Name: Big Creeps Wave
   m_EditorClassIdentifier: 
   Creeps:
-  - CreepPrefab: {fileID: 1260002081433037000, guid: cc1690cde1bfb49158f54df1062eaf1a,
+  - CreepPrefab: {fileID: 1895180321435560541, guid: ea1234c78dc47774badf427233a79c68,
       type: 3}
-    CreepsCount: 3
+    CreepsCount: 4

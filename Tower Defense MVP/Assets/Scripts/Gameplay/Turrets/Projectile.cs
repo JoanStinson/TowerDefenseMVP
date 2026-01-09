@@ -6,7 +6,7 @@ namespace JGM.Gameplay.Turrets
     public class Projectile : MonoBehaviour
     {
         private Transform target;
-        private float speed = 7f;
+        private float speed = 10f;
         private int damageAmount = 1;
 
         public void SetTarget(Transform target)

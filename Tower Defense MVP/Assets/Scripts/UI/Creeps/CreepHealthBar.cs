@@ -17,15 +17,15 @@ namespace JGM.UI.Creeps
 
         private void OnEnable()
         {
-            creep.OnHealthDecreased += OnHealthDecreased;
+            creep.OnTakeDamage += OnHealthChange;
         }
 
         private void OnDisable()
         {
-            creep.OnHealthDecreased -= OnHealthDecreased;
+            creep.OnTakeDamage -= OnHealthChange;
         }
 
-        private void OnHealthDecreased(int health)
+        private void OnHealthChange(int health)
         {
             slider.value = health;
         }

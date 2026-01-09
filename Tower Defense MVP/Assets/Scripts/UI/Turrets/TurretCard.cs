@@ -11,25 +11,25 @@ namespace JGM.UI.Turrets
 
         private TurretShop turretShop;
         private PlayerWallet playerWallet;
-        private bool canDrag;
+        private bool canBuy;
 
         public void Initialize(TurretShop turretShop, PlayerWallet playerWallet)
         {
             this.turretShop = turretShop;
             this.playerWallet = playerWallet;
-            playerWallet.OnWalletChange += UpdateCanDrag;
-            UpdateCanDrag(playerWallet.Coins);
+            playerWallet.OnWalletChange += CheckCanPlayerBuyCard;
+            CheckCanPlayerBuyCard(playerWallet.Coins);
         }
 
-        private void UpdateCanDrag(int coins)
+        private void CheckCanPlayerBuyCard(int coins)
         {
-            canDrag = (coins >= price);
-            canvasGroup.alpha = canDrag ? 1f : 0.5f;
+            canBuy = (coins >= price);
+            canvasGroup.alpha = canBuy ? 1f : 0.5f;
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (!canDrag)
+            if (!canBuy)
             {
                 return;
             }
@@ -37,7 +37,7 @@ namespace JGM.UI.Turrets
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (!canDrag)
+            if (!canBuy)
             {
                 return;
             }
@@ -45,7 +45,7 @@ namespace JGM.UI.Turrets
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            if (!canDrag)
+            if (!canBuy)
             {
                 return;
             }

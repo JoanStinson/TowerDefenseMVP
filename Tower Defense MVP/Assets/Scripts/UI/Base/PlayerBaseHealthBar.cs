@@ -17,15 +17,15 @@ namespace JGM.UI.Base
 
         private void OnEnable()
         {
-            playerBase.OnHealthDecreased += OnHealthDecreased;
+            playerBase.OnTakeDamage += OnHealthChange;
         }
         
         private void OnDisable()
         {
-            playerBase.OnHealthDecreased -= OnHealthDecreased;
+            playerBase.OnTakeDamage -= OnHealthChange;
         }
 
-        private void OnHealthDecreased(int health)
+        private void OnHealthChange(int health)
         {
             slider.value = health;
         }

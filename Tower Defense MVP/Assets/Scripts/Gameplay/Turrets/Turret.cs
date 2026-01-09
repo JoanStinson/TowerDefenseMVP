@@ -6,7 +6,8 @@ namespace JGM.Gameplay.Turrets
 {
     public class Turret : MonoBehaviour
     {
-        [SerializeField] private Projectile projectilePrefab;
+        [SerializeField]
+        private Projectile projectilePrefab;
 
         private CreepSpawner creepSpawner;
         private bool turnedOn;

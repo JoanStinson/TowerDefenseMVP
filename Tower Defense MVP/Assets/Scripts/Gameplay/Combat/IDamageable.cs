@@ -1,4 +1,4 @@
-﻿namespace JGM.Gameplay
+﻿namespace JGM.Gameplay.Combat
 {
     public interface IDamageable
     {

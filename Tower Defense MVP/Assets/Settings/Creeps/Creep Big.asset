@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6727871bb571bf4983765bc3a8c8151, type: 3}
-  m_Name: Big Creeps Wave
+  m_Script: {fileID: 11500000, guid: 457827d7ceafeed47b3fa4f73b3dc59c, type: 3}
+  m_Name: Creep Big
   m_EditorClassIdentifier: 
-  Creeps:
-  - CreepPrefab: {fileID: 1895180321435560541, guid: ea1234c78dc47774badf427233a79c68,
-      type: 3}
-    CreepsCount: 4
+  MoveSpeed: 5
+  StopDistance: 5
+  AttackSpeed: 1
+  Health: 3

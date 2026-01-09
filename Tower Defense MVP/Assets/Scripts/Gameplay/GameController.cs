@@ -6,7 +6,7 @@ namespace JGM.Gameplay
 {
     public class GameController : MonoBehaviour
     {
-        public event Action OnGameStarted;
+        public event Action OnGameStart;
 
         [SerializeField]
         private WavesController wavesController;
@@ -19,7 +19,7 @@ namespace JGM.Gameplay
         private void StartGame()
         {
             wavesController.StartGame();
-            OnGameStarted?.Invoke();
+            OnGameStart?.Invoke();
         }
     }
 }

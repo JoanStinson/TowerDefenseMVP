@@ -9,6 +9,8 @@ namespace JGM.Gameplay.Waves
     {
         public WaveEnemy[] Creeps;
 
+        public float DelayBetweenCreeps = 2;
+
         [Serializable]
         public class WaveEnemy
         {

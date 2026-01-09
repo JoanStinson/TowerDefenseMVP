@@ -16,15 +16,15 @@ namespace JGM.UI.Wallet
 
         private void OnEnable()
         {
-            playerWallet.OnWalletChange += OnAddedCoins;
+            playerWallet.OnWalletChange += OnWalletChange;
         }
 
         private void OnDisable()
         {
-            playerWallet.OnWalletChange -= OnAddedCoins;
+            playerWallet.OnWalletChange -= OnWalletChange;
         }
 
-        private void OnAddedCoins(int coins)
+        private void OnWalletChange(int coins)
         {
             coinsAmountText.text = coins.ToString("000");
         }

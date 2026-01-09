@@ -10,17 +10,14 @@ namespace JGM.Gameplay.Creeps
 {
     public class CreepSpawner : MonoBehaviour
     {
-        public event Action OnCreepKilled;
+        public event Action<Creep> OnCreepKill;
+        public event Action OnAllCreepsKilled;
 
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private Transform target;
         [SerializeField] private PlayerBase playerBase;
 
         public List<Creep> activeCreeps = new();
-
-        private int delayBetweenCreeps = 2;
-
-        public event Action OnAllCreepsKilled;
 
         public void Spawn(Wave wave)
         {
@@ -34,10 +31,9 @@ namespace JGM.Gameplay.Creeps
                 var spawnedCreep = Instantiate(creep, transform, false);
                 int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
                 spawnedCreep.transform.position = spawnPoints[randomSpawnPoint].position;
-                var creepModel = new CreepModel(target, 5f, 5f, playerBase, 1f);
-                spawnedCreep.Initialize(creepModel, this);
+                spawnedCreep.Initialize(this, playerBase);
                 activeCreeps.Add(spawnedCreep);
-                yield return new WaitForSeconds(delayBetweenCreeps);
+                yield return new WaitForSeconds(wave.DelayBetweenCreeps);
             }
         }
 
@@ -63,10 +59,11 @@ namespace JGM.Gameplay.Creeps
             return creepsToSpawn;
         }
 
-        public void RemoveActiveCreep(Creep creep)
+        public void KillCreep(Creep creep)
         {
             activeCreeps.Remove(creep);
-            OnCreepKilled?.Invoke();
+            Destroy(creep.gameObject);
+            OnCreepKill?.Invoke(creep);
 
             if (activeCreeps.Count == 0)
             {

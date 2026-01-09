@@ -1,26 +1,30 @@
 using JGM.Gameplay;
 using JGM.Gameplay.Base;
 using JGM.Gameplay.Waves;
-using System;
 using UnityEngine;
 
 namespace JGM.UI
 {
     public class GameView : MonoBehaviour
     {
+        [Header("Controller")]
         [SerializeField] private GameController gameController;
+        
+        [Header("Panels")]
         [SerializeField] private GameObject topPanel;
         [SerializeField] private GameObject bottomPanel;
         [SerializeField] private GameObject losePopup;
         [SerializeField] private GameObject winPopup;
+
+        [Header("Other")]
         [SerializeField] private PlayerBase playerBase;
         [SerializeField] private WavesController wavesController;
 
         private void Awake()
         {
-            gameController.OnGameStarted += OnGameStart;
-            playerBase.OnHealthDecreased += OnHealthDecrease;
-            wavesController.OnAllWavesComplete += OnAllWavesComplete;
+            gameController.OnGameStart += OnGameStart;
+            playerBase.OnHealthDepleted += OnGameOver;
+            wavesController.OnAllWavesComplete += OnGameWin;
         }
 
         private void OnGameStart()
@@ -31,15 +35,12 @@ namespace JGM.UI
             winPopup.SetActive(false);
         }
 
-        private void OnHealthDecrease(int health)
+        private void OnGameOver()
         {
-            if (health <= 0)
-            {
-                losePopup.SetActive(true);
-            }
+            losePopup.SetActive(true);
         }
 
-        private void OnAllWavesComplete()
+        private void OnGameWin()
         {
             winPopup.SetActive(true);
         }

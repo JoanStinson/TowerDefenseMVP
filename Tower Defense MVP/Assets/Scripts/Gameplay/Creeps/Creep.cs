@@ -1,4 +1,5 @@
 ﻿using JGM.Gameplay.Base;
+using JGM.Gameplay.Combat;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -7,27 +8,27 @@ namespace JGM.Gameplay.Creeps
 {
     public class Creep : MonoBehaviour, IDamageable
     {
-        private Transform target;
-        private float speed;
-        private float stopDistance;
-        private PlayerBase playerBase;
-        private float hitDelay;
+        public event Action<int> OnTakeDamage;
+        public int MaxHealth { get; private set; }
+        public int CoinReward { get; private set; }
+
+        [SerializeField]
+        private CreepConfig config;
+
         private CreepSpawner creepSpawner;
+        private PlayerBase playerBase;
+        private int health;
         private bool initialized;
         private bool isAttacking;
-        private int health = 3;
-        public int MaxHealth { get; } = 3;
-        public event Action<int> OnHealthDecreased;
 
-        public void Initialize(CreepModel model, CreepSpawner creepSpawner)
+        public void Initialize(CreepSpawner creepSpawner, PlayerBase playerBase)
         {
-            target = model.Target;
-            speed = model.Speed;
-            stopDistance = model.StopDistance;
-            playerBase = model.PlayerBase;
-            hitDelay = model.HitDelay;
             this.creepSpawner = creepSpawner;
-            transform.LookAt(target.position);
+            this.playerBase = playerBase;
+            health = config.Health;
+            MaxHealth = config.Health;
+            CoinReward = config.CoinReward;
+            transform.LookAt(playerBase.transform.position);
             initialized = true;
         }
 
@@ -38,42 +39,43 @@ namespace JGM.Gameplay.Creeps
                 return;
             }
 
-            if (!ReachedTarget())
+            if (!ReachedPlayerBase())
             {
-                MoveToTarget();
+                MoveTowardsPlayerBase();
             }
             else
             {
-                HitTarget();
+                AttackPlayerBase();
             }
         }
 
-        private bool ReachedTarget()
+        private bool ReachedPlayerBase()
         {
-            return Vector3.Distance(transform.position, target.position) <= stopDistance;
+            return Vector3.Distance(transform.position, playerBase.transform.position) <= config.StopDistance;
         }
 
-        private void MoveToTarget()
+        private void MoveTowardsPlayerBase()
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            var speed = config.MoveSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, playerBase.transform.position, speed);
         }
 
-        private void HitTarget()
+        private void AttackPlayerBase()
         {
             if (!isAttacking)
             {
-                StartCoroutine(DecreaseTargetHealth());
+                StartCoroutine(Attack());
             }
         }
 
-        private IEnumerator DecreaseTargetHealth()
+        private IEnumerator Attack()
         {
             isAttacking = true;
 
             while (playerBase.CurrentHealth > 0)
             {
-                playerBase.DecreaseHealth();
-                yield return new WaitForSeconds(hitDelay);
+                playerBase.TakeDamage(config.AttackDamage);
+                yield return new WaitForSeconds(config.AttackSpeed);
             }
 
             isAttacking = false;
@@ -82,12 +84,11 @@ namespace JGM.Gameplay.Creeps
         public void TakeDamage(int amount)
         {
             health -= amount;
-            OnHealthDecreased?.Invoke(health);
+            OnTakeDamage?.Invoke(health);
 
             if (health <= 0)
             {
-                creepSpawner.RemoveActiveCreep(this);
-                Destroy(gameObject);
+                creepSpawner.KillCreep(this);
             }
         }
     }

@@ -9,7 +9,7 @@ namespace JGM.UI.Base
         [SerializeField] private PlayerBase playerBase;
         [SerializeField] private Slider slider;
 
-        private void Awake()
+        private void Start()
         {
             slider.maxValue = playerBase.MaxHealth;
             slider.value = playerBase.MaxHealth;

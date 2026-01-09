@@ -11,7 +11,7 @@ namespace JGM.UI.Turrets
         [SerializeField] private Camera mainCamera;
         [SerializeField] private PlayerWallet playerWallet;
 
-        private void Awake()
+        private void Start()
         {
             foreach (var button in turretButtons)
             {

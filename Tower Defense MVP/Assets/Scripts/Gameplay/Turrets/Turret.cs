@@ -33,8 +33,7 @@ namespace JGM.Gameplay.Turrets
         {
             Transform closestTarget = null;
 
-            var targets = creepSpawner.activeCreeps;
-            foreach (var target in targets)
+            foreach (var target in creepSpawner.GetActiveCreeps())
             {
                 if (closestTarget == null)
                 {

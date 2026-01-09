@@ -12,11 +12,10 @@ namespace JGM.Gameplay.Wallet
         [SerializeField]
         private CreepSpawner creepSpawner;
 
-        private int coins;
+        private int coins = 50;
 
         private void Awake()
         {
-            coins = 50;
             creepSpawner.OnCreepKill += OnCreepKill;
         }
 

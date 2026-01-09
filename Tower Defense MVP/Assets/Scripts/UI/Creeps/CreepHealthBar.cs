@@ -9,7 +9,7 @@ namespace JGM.UI.Creeps
         [SerializeField] private Creep creep;
         [SerializeField] private Slider slider;
 
-        private void Awake()
+        private void Start()
         {
             slider.maxValue = creep.MaxHealth;
             slider.value = creep.MaxHealth;

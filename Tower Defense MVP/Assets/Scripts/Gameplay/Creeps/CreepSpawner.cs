@@ -17,7 +17,7 @@ namespace JGM.Gameplay.Creeps
         [SerializeField] private Transform target;
         [SerializeField] private PlayerBase playerBase;
 
-        public List<Creep> activeCreeps = new();
+        private List<Creep> activeCreeps = new();
 
         public void Spawn(Wave wave)
         {
@@ -68,6 +68,14 @@ namespace JGM.Gameplay.Creeps
             if (activeCreeps.Count == 0)
             {
                 OnAllCreepsKilled?.Invoke();
+            }
+        }
+
+        public IEnumerable<Creep> GetActiveCreeps()
+        {
+            foreach (var creep in activeCreeps)
+            {
+                yield return creep;
             }
         }
     }

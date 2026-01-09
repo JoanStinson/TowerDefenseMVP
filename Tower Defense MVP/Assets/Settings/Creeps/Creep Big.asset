@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457827d7ceafeed47b3fa4f73b3dc59c, type: 3}
   m_Name: Creep Big
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
+  MoveSpeed: 3
   StopDistance: 5
-  AttackSpeed: 1
-  Health: 3
+  AttackSpeed: 0.5
+  AttackDamage: 2
+  Health: 5
+  CoinReward: 2

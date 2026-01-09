@@ -1,5 +1,6 @@
 ﻿using JGM.Gameplay.Base;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace JGM.Gameplay.Creeps
@@ -10,6 +11,8 @@ namespace JGM.Gameplay.Creeps
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private Transform target;
         [SerializeField] private PlayerBase playerBase;
+
+        public List<Creep> activeCreeps = new();
 
         private int maxCreeps = 5;
         private int delayBetweenCreeps = 2;
@@ -28,6 +31,7 @@ namespace JGM.Gameplay.Creeps
                 spawnedCreep.transform.position = spawnPoints[randomSpawnPoint].position;
                 var creepModel = new CreepModel(target, 5f, 5f, playerBase, 1f);
                 spawnedCreep.Initialize(creepModel);
+                activeCreeps.Add(spawnedCreep);
                 yield return new WaitForSeconds(delayBetweenCreeps);
             }
         }

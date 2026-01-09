@@ -176,6 +176,7 @@ MonoBehaviour:
   - {fileID: 1526528081}
   target: {fileID: 1672227036}
   playerBase: {fileID: 1672227037}
+  activeCreeps: []
 --- !u!1001 &243691706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -496,6 +497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretPrefab: {fileID: 4655966235329764014, guid: ad95cf0532fb840edb99302196037be4,
     type: 3}
+  creepSpawner: {fileID: 122888830}
 --- !u!1 &393097201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2846,7 +2848,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 3
   m_WholeNumbers: 1
-  m_Value: 3
+  m_Value: 2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

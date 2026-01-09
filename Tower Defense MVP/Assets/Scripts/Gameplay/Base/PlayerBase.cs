@@ -7,11 +7,11 @@ namespace JGM.Gameplay.Base
     {
         public event Action<int> OnHealthDecreased;
 
-        public int MaxHealth = 3;
+        public int MaxHealth { get; } = 30;
+
         public int CurrentHealth => health;
 
-        [SerializeField]
-        private int health = 3;
+        private int health = 30;
 
         public void DecreaseHealth()
         {

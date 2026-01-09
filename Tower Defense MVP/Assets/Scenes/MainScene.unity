@@ -288,6 +288,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnPoint - 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8937194295047700805, guid: b1437a84a99e84d749207c69cf8e4ac4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -741,7 +746,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &897444548
 Transform:
@@ -774,7 +779,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1032700088
 Transform:
@@ -1163,6 +1168,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3563692720844785907, guid: 458d7fbe6b08d464f9bbc0ea868876a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     m_RemovedGameObjects: []
@@ -1237,6 +1247,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnPoint - 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8937194295047700805, guid: b1437a84a99e84d749207c69cf8e4ac4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1309,6 +1324,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpawnPoint - 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937194295047700805, guid: b1437a84a99e84d749207c69cf8e4ac4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1706,6 +1726,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpawnPoint - 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937194295047700805, guid: b1437a84a99e84d749207c69cf8e4ac4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

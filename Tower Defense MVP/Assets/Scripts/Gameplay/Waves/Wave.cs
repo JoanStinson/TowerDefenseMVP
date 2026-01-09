@@ -1,4 +1,5 @@
-﻿using JGM.Gameplay.Creeps;
+﻿using AYellowpaper;
+using JGM.Gameplay.Creeps;
 using System;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace JGM.Gameplay.Waves
         [Serializable]
         public class WaveEnemy
         {
-            public Creep CreepPrefab;
+            public InterfaceReference<ICreep, MonoBehaviour> CreepPrefab;
 
             [Range(1, 100)]
             public int CreepsCount;

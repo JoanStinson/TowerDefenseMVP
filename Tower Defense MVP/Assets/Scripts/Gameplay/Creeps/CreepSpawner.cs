@@ -10,14 +10,14 @@ namespace JGM.Gameplay.Creeps
 {
     public class CreepSpawner : MonoBehaviour
     {
-        public event Action<Creep> OnCreepKill;
+        public event Action<ICreep> OnCreepKill;
         public event Action OnAllCreepsKilled;
 
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private Transform target;
         [SerializeField] private PlayerBase playerBase;
 
-        private List<Creep> activeCreeps = new();
+        private List<ICreep> activeCreeps = new();
 
         public void Spawn(Wave wave)
         {
@@ -28,16 +28,18 @@ namespace JGM.Gameplay.Creeps
         {
             foreach (var creep in GetCreepsToSpawn(wave))
             {
-                var spawnedCreep = Instantiate(creep, transform, false);
+                var spawnedCreep = Instantiate(creep.GameObject, transform, false);
                 int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
                 spawnedCreep.transform.position = spawnPoints[randomSpawnPoint].position;
-                spawnedCreep.Initialize(this, playerBase);
-                activeCreeps.Add(spawnedCreep);
+
+                var activeCreep = spawnedCreep.GetComponent<ICreep>();
+                activeCreep.Initialize(this, playerBase);
+                activeCreeps.Add(activeCreep);
                 yield return new WaitForSeconds(wave.DelayBetweenCreeps);
             }
         }
 
-        private IEnumerable<Creep> GetCreepsToSpawn(Wave wave)
+        private IEnumerable<ICreep> GetCreepsToSpawn(Wave wave)
         {
             int totalCreeps = 0;
             foreach (var creep in wave.Creeps)
@@ -45,13 +47,13 @@ namespace JGM.Gameplay.Creeps
                 totalCreeps += creep.CreepsCount;
             }
 
-            var creepsToSpawn = new List<Creep>(totalCreeps); // pre-allocate for performance
+            var creepsToSpawn = new List<ICreep>(totalCreeps); // pre-allocate for performance
 
             foreach (var creep in wave.Creeps)
             {
                 for (int i = 0; i < creep.CreepsCount; i++)
                 {
-                    creepsToSpawn.Add(creep.CreepPrefab);
+                    creepsToSpawn.Add(creep.CreepPrefab.Value);
                 }
             }
 
@@ -71,7 +73,7 @@ namespace JGM.Gameplay.Creeps
             }
         }
 
-        public IEnumerable<Creep> GetActiveCreeps()
+        public IEnumerable<ICreep> GetActiveCreeps()
         {
             foreach (var creep in activeCreeps)
             {

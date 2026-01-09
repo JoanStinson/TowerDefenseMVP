@@ -6,11 +6,12 @@ using UnityEngine;
 
 namespace JGM.Gameplay.Creeps
 {
-    public class Creep : MonoBehaviour, IDamageable
+    public class Creep : MonoBehaviour, ICreep, IDamageable
     {
         public event Action<int> OnTakeDamage;
         public int MaxHealth { get; private set; }
         public int CoinReward { get; private set; }
+        public GameObject GameObject => gameObject;
 
         [SerializeField]
         private CreepConfig config;

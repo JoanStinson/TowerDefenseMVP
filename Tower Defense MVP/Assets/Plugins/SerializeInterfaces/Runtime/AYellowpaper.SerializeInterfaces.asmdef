@@ -1,9 +1,6 @@
 {
-    "name": "JGM.Gameplay",
-    "rootNamespace": "",
-    "references": [
-        "GUID:31976cc9e85bdd9459e856fcb40d0d50"
-    ],
+    "name": "AYellowpaper.SerializeInterfaces",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

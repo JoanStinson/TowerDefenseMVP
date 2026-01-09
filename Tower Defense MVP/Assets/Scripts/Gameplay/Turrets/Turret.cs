@@ -37,16 +37,16 @@ namespace JGM.Gameplay.Turrets
             {
                 if (closestTarget == null)
                 {
-                    closestTarget = target.transform;
+                    closestTarget = target.GameObject.transform;
                     continue;
                 }
 
-                var distanceToNewTarget = Vector3.Distance(transform.position, target.transform.position);
+                var distanceToNewTarget = Vector3.Distance(transform.position, target.GameObject.transform.position);
                 var distanceToCurrentTarget = Vector3.Distance(transform.position, closestTarget.position);
 
                 if (distanceToNewTarget < distanceToCurrentTarget)
                 {
-                    closestTarget = target.transform;
+                    closestTarget = target.GameObject.transform;
                 }
             }
 

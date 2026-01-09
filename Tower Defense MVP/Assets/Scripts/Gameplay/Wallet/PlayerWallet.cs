@@ -19,7 +19,7 @@ namespace JGM.Gameplay.Wallet
             creepSpawner.OnCreepKill += OnCreepKill;
         }
 
-        private void OnCreepKill(Creep creep)
+        private void OnCreepKill(ICreep creep)
         {
             AddCoins(creep.CoinReward);
         }

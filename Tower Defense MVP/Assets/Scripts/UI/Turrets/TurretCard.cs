@@ -14,7 +14,7 @@ namespace JGM.UI.Turrets
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            Debug.Log("Drag Started on: " + this.name);
+            
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -26,7 +26,7 @@ namespace JGM.UI.Turrets
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            turretShop.OnTurretDragEnd();
+            turretShop.OnTurretCardDropped(eventData.position);
         }
     }
 }

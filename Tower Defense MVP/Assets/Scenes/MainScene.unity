@@ -459,6 +459,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 303821341}
+  - component: {fileID: 303821342}
   m_Layer: 0
   m_Name: TurretSpawner
   m_TagString: Untagged
@@ -481,6 +482,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1762227631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &303821342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303821340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a82fabfe6672247a7b65288fbfe42a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretPrefab: {fileID: 4655966235329764014, guid: ad95cf0532fb840edb99302196037be4,
+    type: 3}
 --- !u!1 &393097201
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +681,7 @@ RectTransform:
   - {fileID: 1876053440}
   - {fileID: 1151107242}
   - {fileID: 795977677}
+  - {fileID: 1219446735}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1391,7 +1407,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 608754133}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1223902856
 GameObject:
@@ -1940,6 +1956,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretButton: {fileID: 6978266848512811313}
+  turretSpawner: {fileID: 303821342}
+  mainCamera: {fileID: 896869053}
 --- !u!4 &1672227036 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 863164606739977221, guid: 458d7fbe6b08d464f9bbc0ea868876a4,
@@ -2927,5 +2945,4 @@ SceneRoots:
   - {fileID: 2092213733}
   - {fileID: 897444548}
   - {fileID: 1762227631}
-  - {fileID: 1219446735}
   - {fileID: 608754133}

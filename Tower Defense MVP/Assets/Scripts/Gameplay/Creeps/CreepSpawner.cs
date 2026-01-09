@@ -14,7 +14,6 @@ namespace JGM.Gameplay.Creeps
         public event Action OnAllCreepsKilled;
 
         [SerializeField] private Transform[] spawnPoints;
-        [SerializeField] private Transform target;
         [SerializeField] private PlayerBase playerBase;
 
         private List<ICreep> activeCreeps = new();

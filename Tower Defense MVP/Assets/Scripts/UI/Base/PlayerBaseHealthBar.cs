@@ -1,13 +1,13 @@
 ﻿using JGM.Gameplay.Base;
+using JGM.UI.HealthBar;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace JGM.UI.Base
 {
-    public class PlayerBaseHealthBar : MonoBehaviour
+    public class PlayerBaseHealthBar : HealthBarBase
     {
-        [SerializeField] private PlayerBase playerBase;
-        [SerializeField] private Slider slider;
+        [SerializeField]
+        private PlayerBase playerBase;
 
         private void Start()
         {
@@ -19,15 +19,10 @@ namespace JGM.UI.Base
         {
             playerBase.OnTakeDamage += OnHealthChange;
         }
-        
+
         private void OnDisable()
         {
             playerBase.OnTakeDamage -= OnHealthChange;
-        }
-
-        private void OnHealthChange(int health)
-        {
-            slider.value = health;
         }
     }
 }

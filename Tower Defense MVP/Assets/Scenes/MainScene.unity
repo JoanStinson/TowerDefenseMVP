@@ -172,7 +172,6 @@ MonoBehaviour:
   - {fileID: 1721398816}
   - {fileID: 741994776}
   - {fileID: 1526528081}
-  target: {fileID: 1672227036}
   playerBase: {fileID: 1672227037}
 --- !u!1 &264059765
 GameObject:
@@ -624,11 +623,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinPopup
       objectReference: {fileID: 0}
-    - target: {fileID: 8767247216979472048, guid: fdaa60ba925ea4ad78e77997673c4c0f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1001,20 +995,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7272473215365806510, guid: 00e34a4cbdf924c0d8fee7214288eaf7,
-        type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8767247216979472048, guid: 00e34a4cbdf924c0d8fee7214288eaf7,
         type: 3}
       propertyPath: m_Name
       value: LosePopup
-      objectReference: {fileID: 0}
-    - target: {fileID: 8767247216979472048, guid: 00e34a4cbdf924c0d8fee7214288eaf7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1784,36 +1768,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632711087744378164, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.8773585
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632711087744378164, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.47387722
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632711087744378164, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.3517711
-      objectReference: {fileID: 0}
-    - target: {fileID: 2763338156547459810, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.6698113
-      objectReference: {fileID: 0}
-    - target: {fileID: 2763338156547459810, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.6698113
-      objectReference: {fileID: 0}
-    - target: {fileID: 2763338156547459810, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.6698113
       objectReference: {fileID: 0}
     - target: {fileID: 7345603496490169810, guid: e56498b5ad7db1645804b907b0bb29eb,
         type: 3}

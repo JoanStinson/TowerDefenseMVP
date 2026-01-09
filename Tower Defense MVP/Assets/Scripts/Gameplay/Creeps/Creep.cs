@@ -13,6 +13,7 @@ namespace JGM.Gameplay.Creeps
         public int CoinReward { get; private set; }
         public GameObject GameObject => gameObject;
 
+
         [SerializeField]
         private CreepConfig config;
 
@@ -21,6 +22,7 @@ namespace JGM.Gameplay.Creeps
         private int health;
         private bool initialized;
         private bool isAttacking;
+        private bool isDead;
 
         public void Initialize(CreepSpawner creepSpawner, PlayerBase playerBase)
         {
@@ -73,7 +75,7 @@ namespace JGM.Gameplay.Creeps
         {
             isAttacking = true;
 
-            while (playerBase.CurrentHealth > 0)
+            while (playerBase.CurrentHealth > 0 && isDead)
             {
                 playerBase.TakeDamage(config.AttackDamage);
                 yield return new WaitForSeconds(config.AttackSpeed);
@@ -89,6 +91,7 @@ namespace JGM.Gameplay.Creeps
 
             if (health <= 0)
             {
+                isDead = true;
                 creepSpawner.KillCreep(this);
             }
         }

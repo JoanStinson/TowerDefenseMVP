@@ -1,13 +1,13 @@
 ﻿using JGM.Gameplay.Creeps;
+using JGM.UI.HealthBar;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace JGM.UI.Creeps
 {
-    public class CreepHealthBar : MonoBehaviour
+    public class CreepHealthBar : HealthBarBase
     {
-        [SerializeField] private Creep creep;
-        [SerializeField] private Slider slider;
+        [SerializeField]
+        private Creep creep;
 
         private void Start()
         {
@@ -23,11 +23,6 @@ namespace JGM.UI.Creeps
         private void OnDisable()
         {
             creep.OnTakeDamage -= OnHealthChange;
-        }
-
-        private void OnHealthChange(int health)
-        {
-            slider.value = health;
         }
     }
 }

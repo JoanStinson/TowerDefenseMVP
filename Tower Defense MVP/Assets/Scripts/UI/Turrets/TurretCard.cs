@@ -11,7 +11,7 @@ namespace JGM.UI.Turrets
 
         private TurretShop turretShop;
         private PlayerWallet playerWallet;
-        private bool canBuy;
+        private bool playerCanBuyCard;
 
         public void Initialize(TurretShop turretShop, PlayerWallet playerWallet)
         {
@@ -23,29 +23,23 @@ namespace JGM.UI.Turrets
 
         private void CheckCanPlayerBuyCard(int coins)
         {
-            canBuy = (coins >= price);
-            canvasGroup.alpha = canBuy ? 1f : 0.5f;
+            playerCanBuyCard = (coins >= price);
+            canvasGroup.alpha = playerCanBuyCard ? 1f : 0.5f;
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (!canBuy)
-            {
-                return;
-            }
+
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (!canBuy)
-            {
-                return;
-            }
+
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            if (!canBuy)
+            if (!playerCanBuyCard)
             {
                 return;
             }

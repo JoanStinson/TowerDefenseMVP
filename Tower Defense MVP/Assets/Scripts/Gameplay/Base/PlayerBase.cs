@@ -8,11 +8,18 @@ namespace JGM.Gameplay.Base
     {
         public event Action<int> OnTakeDamage;
         public event Action OnHealthDepleted;
-
-        public int MaxHealth { get; } = 30;
+        
+        public int MaxHealth => maxHealth;
         public int CurrentHealth => health;
 
-        private int health = 30;
+        [SerializeField]
+        private int maxHealth = 30;
+        private int health;
+
+        private void Awake()
+        {
+            health = maxHealth;
+        }
 
         public void TakeDamage(int amount)
         {

@@ -347,8 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a82fabfe6672247a7b65288fbfe42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretPrefab: {fileID: 4655966235329764014, guid: ad95cf0532fb840edb99302196037be4,
-    type: 3}
   creepSpawner: {fileID: 122888830}
 --- !u!1 &608754131
 GameObject:
@@ -1729,46 +1727,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 608754133}
     m_Modifications:
-    - target: {fileID: 53188370378613506, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 53188370378613506, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 53188370378613506, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 53188370378613506, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 174773051197377748, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 174773051197377748, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 174773051197377748, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 174773051197377748, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7345603496490169810, guid: e56498b5ad7db1645804b907b0bb29eb,
         type: 3}
       propertyPath: m_Name

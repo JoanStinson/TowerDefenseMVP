@@ -1,30 +1,26 @@
-﻿using JGM.Gameplay.Wallet;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace JGM.UI.Turrets
 {
     public class TurretCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
+        [SerializeField] private Image icon;
+        [SerializeField] private TextMeshProUGUI priceText;
         [SerializeField] private CanvasGroup canvasGroup;
-        [SerializeField] private int price = 5;
 
+        private TurretCardModel model;
         private TurretShop turretShop;
-        private PlayerWallet playerWallet;
-        private bool playerCanBuyCard;
+        private bool canPlayerBuyCard;
 
-        public void Initialize(TurretShop turretShop, PlayerWallet playerWallet)
+        public void Initialize(TurretCardModel model, TurretShop turretShop)
         {
+            this.model = model;
+            icon.color = model.Color;
+            priceText.text = model.Price.ToString();
             this.turretShop = turretShop;
-            this.playerWallet = playerWallet;
-            playerWallet.OnWalletChange += CheckCanPlayerBuyCard;
-            CheckCanPlayerBuyCard(playerWallet.Coins);
-        }
-
-        private void CheckCanPlayerBuyCard(int coins)
-        {
-            playerCanBuyCard = (coins >= price);
-            canvasGroup.alpha = playerCanBuyCard ? 1f : 0.5f;
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -39,16 +35,16 @@ namespace JGM.UI.Turrets
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            if (!playerCanBuyCard)
+            if (canPlayerBuyCard)
             {
-                return;
+                turretShop.OnTurretCardDropped(model, eventData.position);
             }
+        }
 
-            bool dropped = turretShop.OnTurretCardDropped(eventData.position);
-            if (dropped)
-            {
-                playerWallet.RemoveCoins(price);
-            }
+        public void RefreshCardIsAvailable(int coins)
+        {
+            canPlayerBuyCard = (coins >= model.Price);
+            canvasGroup.alpha = canPlayerBuyCard ? 1f : 0.5f;
         }
     }
 }

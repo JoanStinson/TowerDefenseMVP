@@ -1,13 +1,16 @@
 ﻿using JGM.Gameplay.Creeps;
+using JGM.Gameplay.Turrets.Projectiles;
 using System.Collections;
 using UnityEngine;
 
 namespace JGM.Gameplay.Turrets
 {
-    public class Turret : MonoBehaviour
+    public class Turret : MonoBehaviour, ITurret
     {
+        public GameObject GameObject => gameObject;
+
         [SerializeField]
-        private Projectile projectilePrefab;
+        private TurretConfig config;
 
         private CreepSpawner creepSpawner;
         private bool turnedOn;
@@ -23,7 +26,7 @@ namespace JGM.Gameplay.Turrets
         {
             while (turnedOn)
             {
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(config.ShootSpeed);
                 var closestTarget = GetClosestTarget();
                 SpawnProjectile(closestTarget);
             }
@@ -32,20 +35,17 @@ namespace JGM.Gameplay.Turrets
         private Transform GetClosestTarget()
         {
             Transform closestTarget = null;
+            float closestSqrDistance = float.MaxValue;
+            Vector3 myPos = transform.position;
 
             foreach (var target in creepSpawner.GetActiveCreeps())
             {
-                if (closestTarget == null)
-                {
-                    closestTarget = target.GameObject.transform;
-                    continue;
-                }
+                Vector3 targetPos = target.GameObject.transform.position;
+                float sqrDistance = (targetPos - myPos).sqrMagnitude;
 
-                var distanceToNewTarget = Vector3.Distance(transform.position, target.GameObject.transform.position);
-                var distanceToCurrentTarget = Vector3.Distance(transform.position, closestTarget.position);
-
-                if (distanceToNewTarget < distanceToCurrentTarget)
+                if (sqrDistance < closestSqrDistance)
                 {
+                    closestSqrDistance = sqrDistance;
                     closestTarget = target.GameObject.transform;
                 }
             }
@@ -57,9 +57,9 @@ namespace JGM.Gameplay.Turrets
         {
             if (target != null)
             {
-                var spawnedProjectile = Instantiate(projectilePrefab, null, false);
+                var spawnedProjectile = Instantiate(config.ProjectilePrefab.Value.GameObject, null, false);
                 spawnedProjectile.transform.position = transform.position;
-                spawnedProjectile.SetTarget(target);
+                spawnedProjectile.GetComponent<IProjectile>().Initialize(target);
             }
         }
     }

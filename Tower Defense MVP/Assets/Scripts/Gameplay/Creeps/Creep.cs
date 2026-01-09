@@ -75,7 +75,7 @@ namespace JGM.Gameplay.Creeps
         {
             isAttacking = true;
 
-            while (playerBase.CurrentHealth > 0 && isDead)
+            while (playerBase.CurrentHealth > 0 && !isDead)
             {
                 playerBase.TakeDamage(config.AttackDamage);
                 yield return new WaitForSeconds(config.AttackSpeed);

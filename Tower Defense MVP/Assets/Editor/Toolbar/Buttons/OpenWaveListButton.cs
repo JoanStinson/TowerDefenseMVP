@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace JGM.Editor
 {
-    public static class OpenWavesListButton
+    public static class OpenWaveListButton
     {
-        private const string WavesListPath = "Assets/Settings/Waves/Waves List.asset";
+        private const string WavesListPath = "Assets/Settings/Waves/Wave List.asset";
 
-        [ToolbarButton(IconName = "VerticalLayoutGroup Icon", Tooltip = "Open Waves List", Order = -200)]
+        [ToolbarButton(IconName = "VerticalLayoutGroup Icon", Tooltip = "Open Wave List", Order = -200)]
         public static void OnButtonClick()
         {
             var wavesList = AssetDatabase.LoadAssetAtPath<Object>(WavesListPath);
 
             if (wavesList == null)
             {
-                Debug.LogError($"Waves List asset not found at path: {WavesListPath}");
+                Debug.LogError($"Wave List asset not found at path: {WavesListPath}");
                 return;
             }
 

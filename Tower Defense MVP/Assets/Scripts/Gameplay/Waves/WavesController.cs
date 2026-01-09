@@ -8,9 +8,9 @@ namespace JGM.Gameplay.Waves
     {
         public event Action<int> OnWaveComplete;
         public event Action OnAllWavesComplete;
-        public int WavesCount => wavesList.Waves.Length;
+        public int WavesCount => waveList.Waves.Length;
 
-        [SerializeField] private WavesList wavesList;
+        [SerializeField] private WaveList waveList;
         [SerializeField] private CreepSpawner creepSpawner;
 
         private Wave currentWave;
@@ -25,8 +25,8 @@ namespace JGM.Gameplay.Waves
         private void StartFirstWave()
         {
             currentWaveIndex = 0;
-            currentWave = wavesList.Waves[currentWaveIndex];
-            creepSpawner.Spawn(currentWave.CreepsCount);
+            currentWave = waveList.Waves[currentWaveIndex];
+            creepSpawner.Spawn(currentWave);
         }
 
         private void OnWaveCleared()
@@ -45,13 +45,13 @@ namespace JGM.Gameplay.Waves
 
         private bool LastWaveCleared()
         {
-            return currentWaveIndex > wavesList.Waves.Length - 1;
+            return currentWaveIndex > waveList.Waves.Length - 1;
         }
 
         private void StartNextWave()
         {
-            currentWave = wavesList.Waves[currentWaveIndex];
-            creepSpawner.Spawn(currentWave.CreepsCount);
+            currentWave = waveList.Waves[currentWaveIndex];
+            creepSpawner.Spawn(currentWave);
             OnWaveComplete?.Invoke(currentWaveIndex);
         }
     }

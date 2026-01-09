@@ -1,12 +1,16 @@
 ﻿using JGM.Gameplay.Base;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace JGM.Gameplay.Creeps
 {
     public class CreepSpawner : MonoBehaviour
     {
+        public event Action OnCreepKilled;
+
         [SerializeField] private Creep creepPrefab;
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private Transform target;
@@ -39,6 +43,7 @@ namespace JGM.Gameplay.Creeps
         public void RemoveActiveCreep(Creep creep)
         {
             activeCreeps.Remove(creep);
+            OnCreepKilled?.Invoke();
         }
     }
 }

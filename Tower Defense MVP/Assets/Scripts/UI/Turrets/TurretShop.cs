@@ -1,31 +1,36 @@
 ﻿using JGM.Gameplay.Turrets;
+using JGM.Gameplay.Wallet;
 using UnityEngine;
 
 namespace JGM.UI.Turrets
 {
     public class TurretShop : MonoBehaviour
     {
-        [SerializeField] private TurretCard turretButton;
+        [SerializeField] private TurretCard[] turretButtons;
         [SerializeField] private TurretSpawner turretSpawner;
         [SerializeField] private Camera mainCamera;
+        [SerializeField] private PlayerWallet playerWallet;
 
         private void Awake()
         {
-            turretButton.Initialize(this);
+            foreach (var button in turretButtons)
+            {
+                button.Initialize(this, playerWallet);
+            }
         }
 
-        public void OnTurretCardDropped(Vector2 position)
+        public bool OnTurretCardDropped(Vector2 position)
         {
             var ray = mainCamera.ScreenPointToRay(position);
 
             if (Physics.Raycast(ray, out RaycastHit hit, 1000f))
             {
                 turretSpawner.Spawn(hit.point);
+                return true;
             }
-            else
-            {
-                Debug.LogWarning("Invalid turret placement");
-            }
+            
+            Debug.LogWarning("Invalid turret placement");
+            return false;
         }
     }
 }

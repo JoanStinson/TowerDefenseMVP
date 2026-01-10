@@ -1367,7 +1367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1973392a7a7a8d5468423e0fbe39c3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creepSpawner: {fileID: 122888830}
 --- !u!4 &1526528081 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7852290601722321916, guid: b1437a84a99e84d749207c69cf8e4ac4,
@@ -1453,6 +1452,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavesController: {fileID: 264059767}
+  creepSpawner: {fileID: 122888830}
+  playerWallet: {fileID: 1479041709}
 --- !u!1 &1876053439 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7345603496490169810, guid: e56498b5ad7db1645804b907b0bb29eb,

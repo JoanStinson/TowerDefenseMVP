@@ -1,5 +1,4 @@
-﻿using JGM.Gameplay.Creeps;
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace JGM.Gameplay.Wallet
@@ -9,20 +8,7 @@ namespace JGM.Gameplay.Wallet
         public event Action<int> OnWalletChange;
         public int Coins => coins;
 
-        [SerializeField]
-        private CreepSpawner creepSpawner;
-
         private int coins = 50;
-
-        private void Awake()
-        {
-            creepSpawner.OnCreepKill += OnCreepKill;
-        }
-
-        private void OnCreepKill(ICreep creep)
-        {
-            AddCoins(creep.CoinReward);
-        }
 
         public void AddCoins(int amount)
         {

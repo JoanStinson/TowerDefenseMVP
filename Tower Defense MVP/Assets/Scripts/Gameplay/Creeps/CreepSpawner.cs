@@ -17,9 +17,11 @@ namespace JGM.Gameplay.Creeps
         [SerializeField] private PlayerBase playerBase;
 
         private List<ICreep> activeCreeps = new();
+        private Transform creepsParent;
 
         public void Spawn(Wave wave)
         {
+            creepsParent ??= new GameObject("Creeps").transform;
             StartCoroutine(SpawnCreeps(wave));
         }
 
@@ -27,7 +29,7 @@ namespace JGM.Gameplay.Creeps
         {
             foreach (var creep in GetCreepsToSpawn(wave))
             {
-                var spawnedCreep = Instantiate(creep.GameObject, transform, false);
+                var spawnedCreep = Instantiate(creep.GameObject, creepsParent, false);
                 int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
                 spawnedCreep.transform.position = spawnPoints[randomSpawnPoint].position;
 

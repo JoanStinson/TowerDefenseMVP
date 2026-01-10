@@ -38,11 +38,13 @@ namespace JGM.UI
         private void OnGameOver()
         {
             losePopup.SetActive(true);
+            Time.timeScale = 0;
         }
 
         private void OnGameWin()
         {
             winPopup.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }

@@ -27,6 +27,8 @@ namespace JGM.Gameplay.Creeps
 
         private IEnumerator SpawnCreeps(Wave wave)
         {
+            yield return new WaitForSeconds(wave.StartWaveDelay);
+
             foreach (var creep in GetCreepsToSpawn(wave))
             {
                 var spawnedCreep = Instantiate(creep.GameObject, creepsParent, false);

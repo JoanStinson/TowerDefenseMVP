@@ -26,9 +26,9 @@ namespace JGM.Gameplay.Turrets
         {
             while (turnedOn)
             {
-                yield return new WaitForSeconds(config.ShootSpeed);
                 var closestTarget = GetClosestTarget();
                 SpawnProjectile(closestTarget);
+                yield return new WaitForSeconds(config.ShootSpeed);
             }
         }
 

@@ -10,6 +10,7 @@ namespace JGM.Gameplay.Waves
     {
         public WaveEnemy[] Creeps;
 
+        public float StartWaveDelay = 3;
         public float DelayBetweenCreeps = 2;
 
         [Serializable]

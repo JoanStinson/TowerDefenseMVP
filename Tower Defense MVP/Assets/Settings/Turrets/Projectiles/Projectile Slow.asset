@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   Effects:
+  - {fileID: 11400000, guid: 8485adf1a32a9754cbc7edacd864c8eb, type: 2}
   - {fileID: 11400000, guid: eee4ea37f31971f48b4dda90b926b009, type: 2}

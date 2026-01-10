@@ -15,4 +15,6 @@ MonoBehaviour:
   MoveSpeed: 5
   StopDistance: 5
   AttackSpeed: 1
-  Health: 3
+  AttackDamage: 1
+  Health: 8
+  CoinReward: 1

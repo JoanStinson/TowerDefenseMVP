@@ -1368,16 +1368,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 8128215575558960601, guid: 6b0dd7c7b7f43c944bf06d4cccf9452b,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8128215575558960601, guid: 6b0dd7c7b7f43c944bf06d4cccf9452b,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8414672125341955597, guid: 6b0dd7c7b7f43c944bf06d4cccf9452b,
         type: 3}
       propertyPath: m_Pivot.x

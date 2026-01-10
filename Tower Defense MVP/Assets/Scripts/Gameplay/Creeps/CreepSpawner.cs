@@ -1,5 +1,4 @@
 ﻿using JGM.Gameplay.Base;
-using JGM.Gameplay.Waves;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,17 +18,15 @@ namespace JGM.Gameplay.Creeps
         private List<ICreep> activeCreeps = new();
         private Transform creepsParent;
 
-        public void Spawn(Wave wave)
+        public void Spawn(IReadOnlyList<ICreep> creeps, float delayBetweenCreeps)
         {
             creepsParent ??= new GameObject("Creeps").transform;
-            StartCoroutine(SpawnCreeps(wave));
+            StartCoroutine(SpawnCreeps(creeps, delayBetweenCreeps));
         }
 
-        private IEnumerator SpawnCreeps(Wave wave)
+        private IEnumerator SpawnCreeps(IReadOnlyList<ICreep> creeps, float delayBetweenCreeps)
         {
-            yield return new WaitForSeconds(wave.StartWaveDelay);
-
-            foreach (var creep in GetCreepsToSpawn(wave))
+            foreach (var creep in creeps)
             {
                 var spawnedCreep = Instantiate(creep.GameObject, creepsParent, false);
                 int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
@@ -38,30 +35,8 @@ namespace JGM.Gameplay.Creeps
                 var activeCreep = spawnedCreep.GetComponent<ICreep>();
                 activeCreep.Initialize(this, playerBase);
                 activeCreeps.Add(activeCreep);
-                yield return new WaitForSeconds(wave.DelayBetweenCreeps);
+                yield return new WaitForSeconds(delayBetweenCreeps);
             }
-        }
-
-        private IEnumerable<ICreep> GetCreepsToSpawn(Wave wave)
-        {
-            int totalCreeps = 0;
-            foreach (var creep in wave.Creeps)
-            {
-                totalCreeps += creep.CreepsCount;
-            }
-
-            var creepsToSpawn = new List<ICreep>(totalCreeps); // pre-allocate for performance
-
-            foreach (var creep in wave.Creeps)
-            {
-                for (int i = 0; i < creep.CreepsCount; i++)
-                {
-                    creepsToSpawn.Add(creep.CreepPrefab.Value);
-                }
-            }
-
-            creepsToSpawn.Shuffle();
-            return creepsToSpawn;
         }
 
         public void KillCreep(Creep creep)

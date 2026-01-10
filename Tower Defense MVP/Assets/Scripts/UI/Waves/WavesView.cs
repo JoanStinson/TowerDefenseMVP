@@ -9,27 +9,19 @@ namespace JGM.UI.Waves
         [SerializeField] private TextMeshProUGUI wavesNumberText;
         [SerializeField] private WavesController wavesController;
 
-        private int maxWave;
-
-        private void Start()
-        {
-            maxWave = wavesController.WavesCount;
-            wavesNumberText.text = $"1/{maxWave}";
-        }
-
         private void OnEnable()
         {
-            wavesController.OnWaveComplete += OnWaveComplete;
+            wavesController.OnWaveStart += OnWaveStart;
         }
 
         private void OnDisable()
         {
-            wavesController.OnWaveComplete -= OnWaveComplete;
+            wavesController.OnWaveStart -= OnWaveStart;
         }
 
-        private void OnWaveComplete(int wave)
+        private void OnWaveStart(int wave)
         {
-            wavesNumberText.text = $"{wave + 1}/{maxWave}";
+            wavesNumberText.text = $"{wave + 1}/{wavesController.WavesCount}";
         }
     }
 }

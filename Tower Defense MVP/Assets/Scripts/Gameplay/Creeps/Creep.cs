@@ -87,6 +87,11 @@ namespace JGM.Gameplay.Creeps
 
         public void TakeDamage(int amount)
         {
+            if (isDead)
+            {
+                return;
+            }
+
             health -= amount;
             OnTakeDamage?.Invoke(health);
 

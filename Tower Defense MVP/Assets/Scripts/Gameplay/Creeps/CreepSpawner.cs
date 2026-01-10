@@ -17,6 +17,8 @@ namespace JGM.Gameplay.Creeps
         private CoroutineService coroutineService;
         private List<ICreep> activeCreeps = new();
         private Transform creepsParent;
+        private int totalCreepsToSpawn;
+        private int activeCreepsSpawned;
 
         public CreepSpawner(Transform[] spawnPoints)
         {
@@ -29,6 +31,8 @@ namespace JGM.Gameplay.Creeps
         public void Spawn(IReadOnlyList<ICreep> creeps, float delayBetweenCreeps)
         {
             creepsParent ??= new GameObject("Creeps").transform;
+            totalCreepsToSpawn = creeps.Count;
+            activeCreepsSpawned = 0;
             coroutineService.Run(SpawnCreeps(creeps, delayBetweenCreeps));
         }
 
@@ -39,10 +43,10 @@ namespace JGM.Gameplay.Creeps
                 var spawnedCreep = GameObject.Instantiate(creep.GameObject, creepsParent, false);
                 int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
                 spawnedCreep.transform.position = spawnPoints[randomSpawnPoint].position;
-
                 var activeCreep = spawnedCreep.GetComponent<ICreep>();
                 activeCreep.Initialize(this, playerBase);
                 activeCreeps.Add(activeCreep);
+                activeCreepsSpawned++;
                 yield return new WaitForSeconds(delayBetweenCreeps);
             }
         }
@@ -53,10 +57,15 @@ namespace JGM.Gameplay.Creeps
             GameObject.Destroy(creep.gameObject);
             OnCreepKill?.Invoke(creep);
 
-            if (activeCreeps.Count == 0)
+            if (AllCreepsKilled())
             {
                 OnAllCreepsKilled?.Invoke();
             }
+        }
+
+        private bool AllCreepsKilled()
+        {
+            return activeCreeps.Count == 0 && activeCreepsSpawned == totalCreepsToSpawn;
         }
 
         public IEnumerable<ICreep> GetActiveCreeps()

@@ -1,4 +1,5 @@
-﻿using JGM.Gameplay.Turrets;
+﻿using JGM.Gameplay;
+using JGM.Gameplay.Turrets;
 using JGM.Gameplay.Wallet;
 using UnityEngine;
 
@@ -6,18 +7,20 @@ namespace JGM.UI.Turrets
 {
     public class TurretShop : MonoBehaviour
     {
-        [Header("Turret Cards")]
         [SerializeField] private TurretList turretList;
         [SerializeField] private TurretCard turretCardPrefab;
         [SerializeField] private Transform turretCardsParent;
 
-        [Header("Other")]
-        [SerializeField] private TurretSpawner turretSpawner;
-        [SerializeField] private Camera mainCamera;
-        [SerializeField] private PlayerWallet playerWallet;
+        private PlayerWallet playerWallet;
+        private TurretSpawner turretSpawner;
+        private Camera mainCamera;
 
         private void Start()
         {
+            var serviceLocator = ServiceLocator.Instance;
+            playerWallet = serviceLocator.Get<PlayerWallet>();
+            turretSpawner = serviceLocator.Get<TurretSpawner>();
+            mainCamera = serviceLocator.Get<Camera>();
             SpawnTurretCards();
         }
 
@@ -25,11 +28,11 @@ namespace JGM.UI.Turrets
         {
             foreach (var turret in turretList.Turrets)
             {
-                var spawnedTurretCard = Instantiate(turretCardPrefab, turretCardsParent, false);
+                var turretCard = Instantiate(turretCardPrefab, turretCardsParent, false);
                 var turretCardModel = new TurretCardModel(turret.Key, turret.Value.Price, turret.Value.CardColor);
-                spawnedTurretCard.Initialize(turretCardModel, this);
-                spawnedTurretCard.RefreshCardIsAvailable(playerWallet.Coins);
-                playerWallet.OnWalletChange += spawnedTurretCard.RefreshCardIsAvailable;
+                turretCard.Initialize(turretCardModel, this);
+                turretCard.RefreshCardIsAvailable(playerWallet.Coins);
+                playerWallet.OnWalletChange += turretCard.RefreshCardIsAvailable;
             }
         }
 

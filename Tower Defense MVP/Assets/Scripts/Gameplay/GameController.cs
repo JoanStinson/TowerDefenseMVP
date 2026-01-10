@@ -10,23 +10,22 @@ namespace JGM.Gameplay
     {
         public event Action OnGameStart;
 
-        [SerializeField] private WavesController wavesController;
-        [SerializeField] private CreepSpawner creepSpawner;
-        [SerializeField] private PlayerWallet playerWallet;
+        private PlayerWallet playerWallet;
+        private WavesController wavesController;
 
-        private void Awake()
+        private void Start()
         {
+            var serviceLocator = ServiceLocator.Instance;
+            playerWallet = serviceLocator.Get<PlayerWallet>();
+            wavesController = serviceLocator.Get<WavesController>();
+            var creepSpawner = serviceLocator.Get<CreepSpawner>();
             creepSpawner.OnCreepKill += OnCreepKill;
+            StartGame();
         }
 
         private void OnCreepKill(ICreep creep)
         {
             playerWallet.AddCoins(creep.CoinReward);
-        }
-
-        private void Start()
-        {
-            StartGame();
         }
 
         private void StartGame()

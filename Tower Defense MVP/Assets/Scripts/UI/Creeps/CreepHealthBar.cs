@@ -13,14 +13,10 @@ namespace JGM.UI.Creeps
         {
             slider.maxValue = creep.MaxHealth;
             slider.value = creep.MaxHealth;
-        }
-
-        private void OnEnable()
-        {
             creep.OnTakeDamage += OnHealthChange;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             creep.OnTakeDamage -= OnHealthChange;
         }

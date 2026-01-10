@@ -328,7 +328,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 5117450539754720045}
-  playerBase: {fileID: 0}
 --- !u!114 &5117450539754720045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,7 +600,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavesNumberText: {fileID: 6163729523027344902}
-  wavesController: {fileID: 0}
 --- !u!1 &3882223239520599743
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +860,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsAmountText: {fileID: 5800660673335202561}
-  playerWallet: {fileID: 0}
 --- !u!1 &6821436150903128963
 GameObject:
   m_ObjectHideFlags: 0

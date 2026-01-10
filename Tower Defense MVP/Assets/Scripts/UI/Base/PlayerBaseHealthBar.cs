@@ -1,16 +1,16 @@
-﻿using JGM.Gameplay.Base;
+﻿using JGM.Gameplay;
+using JGM.Gameplay.Base;
 using JGM.UI.HealthBar;
-using UnityEngine;
 
 namespace JGM.UI.Base
 {
     public class PlayerBaseHealthBar : HealthBarBase
     {
-        [SerializeField]
         private PlayerBase playerBase;
 
-        private void Start()
+        private void Awake()
         {
+            playerBase = ServiceLocator.Instance.Get<PlayerBase>();
             slider.maxValue = playerBase.MaxHealth;
             slider.value = playerBase.MaxHealth;
         }

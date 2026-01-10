@@ -6,23 +6,31 @@ using UnityEngine;
 
 namespace JGM.Gameplay.Waves
 {
-    public class WavesController : MonoBehaviour
+    public class WavesController
     {
         public event Action<int> OnWaveStart;
         public event Action OnAllWavesComplete;
         public int WavesCount => waveList.Waves.Length;
 
-        [SerializeField] private WaveList waveList;
-        [SerializeField] private CreepSpawner creepSpawner;
-
+        private WaveList waveList;
+        private CreepSpawner creepSpawner;
+        private CoroutineService coroutineService;
         private Wave currentWave;
         private int currentWaveIndex;
+
+        public WavesController(WaveList waveList)
+        {
+            this.waveList = waveList;
+            var serviceLocator = ServiceLocator.Instance;
+            creepSpawner = serviceLocator.Get<CreepSpawner>();
+            coroutineService = serviceLocator.Get<CoroutineService>();
+        }
 
         public void StartGame()
         {
             currentWaveIndex = 0;
             currentWave = waveList.Waves[currentWaveIndex];
-            StartCoroutine(StartWave());
+            coroutineService.Run(StartWave());
             creepSpawner.OnAllCreepsKilled += OnWaveCleared;
         }
 
@@ -65,7 +73,7 @@ namespace JGM.Gameplay.Waves
             {
                 currentWaveIndex++;
                 currentWave = waveList.Waves[currentWaveIndex];
-                StartCoroutine(StartWave());
+                coroutineService.Run(StartWave());
             }
         }
 

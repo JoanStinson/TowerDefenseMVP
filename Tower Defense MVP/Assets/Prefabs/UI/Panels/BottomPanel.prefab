@@ -91,9 +91,6 @@ MonoBehaviour:
   turretCardPrefab: {fileID: 8209239199930678674, guid: b7fe948409ce61c49baee37e8b285dd0,
     type: 3}
   turretCardsParent: {fileID: 6012680621142149122}
-  turretSpawner: {fileID: 0}
-  mainCamera: {fileID: 0}
-  playerWallet: {fileID: 0}
 --- !u!222 &6204674068921299304
 CanvasRenderer:
   m_ObjectHideFlags: 0

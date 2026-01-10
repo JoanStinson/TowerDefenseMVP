@@ -1,4 +1,5 @@
-﻿using JGM.Gameplay.Waves;
+﻿using JGM.Gameplay;
+using JGM.Gameplay.Waves;
 using TMPro;
 using UnityEngine;
 
@@ -6,8 +7,15 @@ namespace JGM.UI.Waves
 {
     public class WavesView : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI wavesNumberText;
-        [SerializeField] private WavesController wavesController;
+        [SerializeField]
+        private TextMeshProUGUI wavesNumberText;
+
+        private WavesController wavesController;
+
+        private void Awake()
+        {
+            wavesController = ServiceLocator.Instance.Get<WavesController>();
+        }
 
         private void OnEnable()
         {

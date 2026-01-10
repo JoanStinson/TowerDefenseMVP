@@ -123,102 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &122888828
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 122888829}
-  - component: {fileID: 122888830}
-  m_Layer: 0
-  m_Name: CreepSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &122888829
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122888828}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1762227631}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &122888830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122888828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f74c0e723bdba3498d6d5ddd3e22e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoints:
-  - {fileID: 1588563412}
-  - {fileID: 1721398816}
-  - {fileID: 741994776}
-  - {fileID: 1526528081}
-  playerBase: {fileID: 1672227037}
---- !u!1 &264059765
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 264059766}
-  - component: {fileID: 264059767}
-  m_Layer: 0
-  m_Name: WavesController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &264059766
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264059765}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1762227631}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &264059767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264059765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd5ba60ef83e734439d0e3bd5d356a05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveList: {fileID: 11400000, guid: 7898fa757a07baa4196cb14532ee4154, type: 2}
-  creepSpawner: {fileID: 122888830}
 --- !u!1001 &266367351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,51 +207,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1151107241}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &303821340
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 303821341}
-  - component: {fileID: 303821342}
-  m_Layer: 0
-  m_Name: TurretSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &303821341
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303821340}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1762227631}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &303821342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303821340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a82fabfe6672247a7b65288fbfe42a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creepSpawner: {fileID: 122888830}
 --- !u!1 &608754131
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +218,7 @@ GameObject:
   - component: {fileID: 608754133}
   - component: {fileID: 608754132}
   m_Layer: 5
-  m_Name: Game View
+  m_Name: GameView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -382,8 +241,6 @@ MonoBehaviour:
   bottomPanel: {fileID: 1876053439}
   losePopup: {fileID: 283831590}
   winPopup: {fileID: 1441232056}
-  playerBase: {fileID: 1672227037}
-  wavesController: {fileID: 264059767}
 --- !u!224 &608754133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -644,7 +501,7 @@ GameObject:
   - component: {fileID: 896869053}
   - component: {fileID: 896869052}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1087,11 +944,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 863164606739977221, guid: 458d7fbe6b08d464f9bbc0ea868876a4,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 863164606739977221, guid: 458d7fbe6b08d464f9bbc0ea868876a4,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1145,18 +997,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBase
       objectReference: {fileID: 0}
-    - target: {fileID: 3563692720844785907, guid: 458d7fbe6b08d464f9bbc0ea868876a4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3563692720844785907, guid: 458d7fbe6b08d464f9bbc0ea868876a4,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1323,50 +1164,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 795977676}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1479041707
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1479041708}
-  - component: {fileID: 1479041709}
-  m_Layer: 0
-  m_Name: PlayerWallet
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1479041708
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479041707}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1762227631}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1479041709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479041707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1973392a7a7a8d5468423e0fbe39c3a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1526528081 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7852290601722321916, guid: b1437a84a99e84d749207c69cf8e4ac4,
@@ -1403,6 +1200,72 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2664209775385113902}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1745249236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1745249237}
+  - component: {fileID: 1745249238}
+  - component: {fileID: 1745249239}
+  m_Layer: 0
+  m_Name: ServiceInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1745249237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745249236}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1745249238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745249236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9eea059d2323149bedc5f569f0cbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameConfig: {fileID: 11400000, guid: 9166706fc04c39a4a9459ff5f137a5d6, type: 2}
+  creepSpawnPoints:
+  - {fileID: 1588563412}
+  - {fileID: 1721398816}
+  - {fileID: 741994776}
+  - {fileID: 1526528081}
+  playerBase: {fileID: 1672227037}
+  mainCamera: {fileID: 896869053}
+  coroutineService: {fileID: 1745249239}
+--- !u!114 &1745249239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745249236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f3f4d1db6324b4b842a6af29a3528a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1762227629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,7 +1277,7 @@ GameObject:
   - component: {fileID: 1762227631}
   - component: {fileID: 1762227632}
   m_Layer: 0
-  m_Name: Game Controller
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1432,11 +1295,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 122888829}
-  - {fileID: 303821341}
-  - {fileID: 1479041708}
-  - {fileID: 264059766}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1762227632
@@ -1451,9 +1310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6d766c74943ef44aafb9d954ff6cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavesController: {fileID: 264059767}
-  creepSpawner: {fileID: 122888830}
-  playerWallet: {fileID: 1479041709}
 --- !u!1 &1876053439 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7345603496490169810, guid: e56498b5ad7db1645804b907b0bb29eb,
@@ -1512,21 +1368,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 4406854860581734711, guid: 6b0dd7c7b7f43c944bf06d4cccf9452b,
-        type: 3}
-      propertyPath: playerWallet
-      value: 
-      objectReference: {fileID: 1479041709}
-    - target: {fileID: 4426665229653890339, guid: 6b0dd7c7b7f43c944bf06d4cccf9452b,
-        type: 3}
-      propertyPath: wavesController
-      value: 
-      objectReference: {fileID: 264059767}
-    - target: {fileID: 6976091743305579733, guid: 6b0dd7c7b7f43c944bf06d4cccf9452b,
-        type: 3}
-      propertyPath: playerBase
-      value: 
-      objectReference: {fileID: 1672227037}
     - target: {fileID: 8128215575558960601, guid: 6b0dd7c7b7f43c944bf06d4cccf9452b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1733,21 +1574,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 8452621300942944996, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 896869053}
-    - target: {fileID: 8452621300942944996, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: playerWallet
-      value: 
-      objectReference: {fileID: 1479041709}
-    - target: {fileID: 8452621300942944996, guid: e56498b5ad7db1645804b907b0bb29eb,
-        type: 3}
-      propertyPath: turretSpawner
-      value: 
-      objectReference: {fileID: 303821342}
     - target: {fileID: 9199033978749055721, guid: e56498b5ad7db1645804b907b0bb29eb,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1872,5 +1698,6 @@ SceneRoots:
   - {fileID: 896869054}
   - {fileID: 2092213733}
   - {fileID: 897444548}
+  - {fileID: 1745249237}
   - {fileID: 1762227631}
   - {fileID: 608754133}

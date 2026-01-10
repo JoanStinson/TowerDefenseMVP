@@ -7,28 +7,36 @@ using Random = UnityEngine.Random;
 
 namespace JGM.Gameplay.Creeps
 {
-    public class CreepSpawner : MonoBehaviour
+    public class CreepSpawner
     {
         public event Action<ICreep> OnCreepKill;
         public event Action OnAllCreepsKilled;
 
-        [SerializeField] private Transform[] spawnPoints;
-        [SerializeField] private PlayerBase playerBase;
-
+        private Transform[] spawnPoints;
+        private PlayerBase playerBase;
+        private CoroutineService coroutineService;
         private List<ICreep> activeCreeps = new();
         private Transform creepsParent;
+
+        public CreepSpawner(Transform[] spawnPoints)
+        {
+            this.spawnPoints = spawnPoints;
+            var serviceLocator = ServiceLocator.Instance;
+            playerBase = serviceLocator.Get<PlayerBase>();
+            coroutineService = serviceLocator.Get<CoroutineService>();
+        }
 
         public void Spawn(IReadOnlyList<ICreep> creeps, float delayBetweenCreeps)
         {
             creepsParent ??= new GameObject("Creeps").transform;
-            StartCoroutine(SpawnCreeps(creeps, delayBetweenCreeps));
+            coroutineService.Run(SpawnCreeps(creeps, delayBetweenCreeps));
         }
 
         private IEnumerator SpawnCreeps(IReadOnlyList<ICreep> creeps, float delayBetweenCreeps)
         {
             foreach (var creep in creeps)
             {
-                var spawnedCreep = Instantiate(creep.GameObject, creepsParent, false);
+                var spawnedCreep = GameObject.Instantiate(creep.GameObject, creepsParent, false);
                 int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
                 spawnedCreep.transform.position = spawnPoints[randomSpawnPoint].position;
 
@@ -42,7 +50,7 @@ namespace JGM.Gameplay.Creeps
         public void KillCreep(Creep creep)
         {
             activeCreeps.Remove(creep);
-            Destroy(creep.gameObject);
+            GameObject.Destroy(creep.gameObject);
             OnCreepKill?.Invoke(creep);
 
             if (activeCreeps.Count == 0)

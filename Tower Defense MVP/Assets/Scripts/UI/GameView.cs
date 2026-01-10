@@ -7,21 +7,22 @@ namespace JGM.UI
 {
     public class GameView : MonoBehaviour
     {
-        [Header("Controller")]
-        [SerializeField] private GameController gameController;
-        
+        [Header("Game Controller")]
+        [SerializeField]
+        private GameController gameController;
+
         [Header("Panels")]
         [SerializeField] private GameObject topPanel;
         [SerializeField] private GameObject bottomPanel;
         [SerializeField] private GameObject losePopup;
         [SerializeField] private GameObject winPopup;
 
-        [Header("Other")]
-        [SerializeField] private PlayerBase playerBase;
-        [SerializeField] private WavesController wavesController;
-
         private void Awake()
         {
+            var serviceLocator = ServiceLocator.Instance;
+            var playerBase = serviceLocator.Get<PlayerBase>();
+            var wavesController = serviceLocator.Get<WavesController>();
+
             gameController.OnGameStart += OnGameStart;
             playerBase.OnHealthDepleted += OnGameOver;
             wavesController.OnAllWavesComplete += OnGameWin;

@@ -1,25 +1,27 @@
 ﻿using System;
-using UnityEngine;
 
 namespace JGM.Gameplay.Wallet
 {
-    public class PlayerWallet : MonoBehaviour
+    public class PlayerWallet
     {
         public event Action<int> OnWalletChange;
-        public int Coins => coins;
+        public int Coins { get; private set; }
 
-        private int coins = 50;
+        public PlayerWallet(int coins)
+        {
+            Coins = coins;
+        }
 
         public void AddCoins(int amount)
         {
-            coins += amount;
-            OnWalletChange?.Invoke(coins);
+            Coins += amount;
+            OnWalletChange?.Invoke(Coins);
         }
 
         public void RemoveCoins(int amount)
         {
-            coins -= amount;
-            OnWalletChange?.Invoke(coins);
+            Coins -= amount;
+            OnWalletChange?.Invoke(Coins);
         }
     }
 }

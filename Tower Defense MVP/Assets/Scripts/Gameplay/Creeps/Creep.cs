@@ -6,28 +6,30 @@ using UnityEngine;
 
 namespace JGM.Gameplay.Creeps
 {
-    public class Creep : MonoBehaviour, ICreep, IDamageable
+    public class Creep : MonoBehaviour, ICreep, IDamageable, IMovable
     {
         public event Action<int> OnTakeDamage;
         public int MaxHealth { get; private set; }
         public int CoinReward { get; private set; }
         public GameObject GameObject => gameObject;
 
-
         [SerializeField]
         private CreepConfig config;
 
         private CreepSpawner creepSpawner;
         private PlayerBase playerBase;
+        private float moveSpeed;
         private int health;
         private bool initialized;
         private bool isAttacking;
         private bool isDead;
+        private bool isSlowedDown;
 
         public void Initialize(CreepSpawner creepSpawner, PlayerBase playerBase)
         {
             this.creepSpawner = creepSpawner;
             this.playerBase = playerBase;
+            moveSpeed = config.MoveSpeed;
             health = config.Health;
             MaxHealth = config.Health;
             CoinReward = config.CoinReward;
@@ -59,8 +61,7 @@ namespace JGM.Gameplay.Creeps
 
         private void MoveTowardsPlayerBase()
         {
-            var speed = config.MoveSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, playerBase.transform.position, speed);
+            transform.position = Vector3.MoveTowards(transform.position, playerBase.transform.position, moveSpeed * Time.deltaTime);
         }
 
         private void AttackPlayerBase()
@@ -94,6 +95,23 @@ namespace JGM.Gameplay.Creeps
                 isDead = true;
                 creepSpawner.KillCreep(this);
             }
+        }
+
+        public void ApplySpeedModifier(float multiplier, float duration)
+        {
+            if (!isSlowedDown)
+            {
+                StartCoroutine(ApplySlowEffect(multiplier, duration));
+            }
+        }
+
+        private IEnumerator ApplySlowEffect(float multiplier, float duration)
+        {
+            isSlowedDown = true;
+            moveSpeed = config.MoveSpeed * multiplier;
+            yield return new WaitForSeconds(duration);
+            moveSpeed = config.MoveSpeed;
+            isSlowedDown = false;
         }
     }
 }

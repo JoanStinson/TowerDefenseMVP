@@ -1,4 +1,5 @@
 ﻿using JGM.Gameplay.Combat;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace JGM.Gameplay.Turrets.Projectiles
@@ -11,10 +12,16 @@ namespace JGM.Gameplay.Turrets.Projectiles
         private ProjectileConfig config;
 
         private Transform target;
+        private List<ICombatEffect> effects = new();
 
         public void Initialize(Transform target)
         {
             this.target = target;
+
+            foreach (var effectConfig in config.Effects)
+            {
+                effects.Add(effectConfig.CreateEffect());
+            }
         }
 
         private void Update()
@@ -33,11 +40,12 @@ namespace JGM.Gameplay.Turrets.Projectiles
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<IDamageable>(out var damageable))
+            foreach (var effect in effects)
             {
-                damageable.TakeDamage(config.DamageAmount);
-                Destroy(gameObject);
+                effect.Apply(other.gameObject);
             }
+
+            //Destroy(gameObject);
         }
     }
 }

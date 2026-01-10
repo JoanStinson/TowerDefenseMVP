@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace JGM.Gameplay.Turrets
 {
-    [CreateAssetMenu(fileName = "New Turret List", menuName = "Turret List")]
+    [CreateAssetMenu(fileName = "New Turret List", menuName = "Turrets/Turret List")]
     public class TurretList : ScriptableObject
     {
         [SerializedDictionary("Turret Id", "Turret Prefab")]

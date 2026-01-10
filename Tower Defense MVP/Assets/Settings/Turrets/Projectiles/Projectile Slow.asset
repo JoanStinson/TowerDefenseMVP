@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bae2f469222fb964fb8056556c510f92, type: 3}
-  m_Name: Projectile
+  m_Name: Projectile Slow
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   Effects:
-  - {fileID: 11400000, guid: 492ff5d6a861ccf4ebdcab239e4bcea2, type: 2}
+  - {fileID: 11400000, guid: eee4ea37f31971f48b4dda90b926b009, type: 2}

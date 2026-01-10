@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bae2f469222fb964fb8056556c510f92, type: 3}
-  m_Name: Projectile
+  m_Script: {fileID: 11500000, guid: 8396a0b3867330949825771735950adc, type: 3}
+  m_Name: Slow Effect
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
-  Effects:
-  - {fileID: 11400000, guid: 492ff5d6a861ccf4ebdcab239e4bcea2, type: 2}
+  SlowMultiplier: 0.5
+  Duration: 2

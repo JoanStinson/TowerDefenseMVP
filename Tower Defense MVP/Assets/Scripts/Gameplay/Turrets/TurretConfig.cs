@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JGM.Gameplay.Turrets
 {
-    [CreateAssetMenu(fileName = "New Turret Config", menuName = "Turret Config")]
+    [CreateAssetMenu(fileName = "New Turret Config", menuName = "Turrets/Turret Config")]
     public class TurretConfig : ScriptableObject
     {
         public InterfaceReference<IProjectile, MonoBehaviour> ProjectilePrefab;

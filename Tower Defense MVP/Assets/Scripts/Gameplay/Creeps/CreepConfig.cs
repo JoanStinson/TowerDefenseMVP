@@ -2,7 +2,7 @@
 
 namespace JGM.Gameplay.Creeps
 {
-    [CreateAssetMenu(fileName = "New Creep Config", menuName = "Creep Config")]
+    [CreateAssetMenu(fileName = "New Creep Config", menuName = "Creeps/Creep Config")]
     public class CreepConfig : ScriptableObject
     {
         [Header("Movement")]

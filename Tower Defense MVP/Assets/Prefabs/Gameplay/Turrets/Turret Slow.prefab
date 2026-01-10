@@ -18,6 +18,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret SlowDown
       objectReference: {fileID: 0}
+    - target: {fileID: 4655966235329764014, guid: ad95cf0532fb840edb99302196037be4,
+        type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d1194b8385bba14f8727427c4b4b650,
+        type: 2}
     - target: {fileID: 6631560805576656205, guid: ad95cf0532fb840edb99302196037be4,
         type: 3}
       propertyPath: m_LocalScale.x

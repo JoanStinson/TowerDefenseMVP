@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace JGM.Gameplay.Waves
 {
-    [CreateAssetMenu(fileName = "New Wave", menuName = "Wave")]
+    [CreateAssetMenu(fileName = "New Wave", menuName = "Waves/Wave")]
     public class Wave : ScriptableObject
     {
         public WaveEnemy[] Creeps;

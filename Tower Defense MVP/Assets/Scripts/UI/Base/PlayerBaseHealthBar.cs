@@ -17,12 +17,12 @@ namespace JGM.UI.Base
 
         private void OnEnable()
         {
-            playerBase.OnTakeDamage += OnHealthChange;
+            playerBase.OnHealthChange += OnHealthChange;
         }
 
         private void OnDisable()
         {
-            playerBase.OnTakeDamage -= OnHealthChange;
+            playerBase.OnHealthChange -= OnHealthChange;
         }
     }
 }

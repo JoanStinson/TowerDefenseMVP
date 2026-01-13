@@ -6,7 +6,7 @@ namespace JGM.Gameplay.Base
 {
     public class PlayerBase : MonoBehaviour, IDamageable
     {
-        public event Action<int> OnTakeDamage;
+        public event Action<int> OnHealthChange;
         public event Action OnHealthDepleted;
 
         public int MaxHealth => maxHealth;
@@ -24,13 +24,19 @@ namespace JGM.Gameplay.Base
         public void TakeDamage(int amount)
         {
             health -= amount;
-            OnTakeDamage?.Invoke(health);
+            OnHealthChange?.Invoke(health);
 
             if (health <= 0)
             {
                 health = 0;
                 OnHealthDepleted?.Invoke();
             }
+        }
+
+        public void Restart()
+        {
+            health = maxHealth;
+            OnHealthChange?.Invoke(health);
         }
     }
 }

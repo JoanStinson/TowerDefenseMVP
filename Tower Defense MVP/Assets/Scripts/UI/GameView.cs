@@ -58,8 +58,7 @@ namespace JGM.UI
 
         private void OnGameRestart()
         {
-            popupLose.SetActive(false);
-            popupWin.SetActive(false);
+            gameController.RestartGame();
             Time.timeScale = 1;
         }
     }

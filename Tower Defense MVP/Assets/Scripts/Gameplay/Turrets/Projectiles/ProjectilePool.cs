@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -17,11 +18,12 @@ namespace JGM.Gameplay.Turrets.Projectiles
 
             foreach (var prefab in config.Configs)
             {
-                CreatePool(prefab);
+                var pool = CreatePool(prefab);
+                PrewarmPool(pool.Item1, pool.Item2);
             }
         }
 
-        private void CreatePool(ProjectilePoolConfig.BasicPoolConfig prefab)
+        private (ObjectPool<IProjectile>, int) CreatePool(ProjectilePoolConfig.Config prefab)
         {
             var poolParent = new GameObject($"{prefab.ProjectilePrefab.name}Pool").transform;
             poolParent.SetParent(rootParent, false);
@@ -33,9 +35,26 @@ namespace JGM.Gameplay.Turrets.Projectiles
                 () => OnCreate(prefab, poolParent, pool), OnGet, OnRelease, OnDestroy, Debug.isDebugBuild, prefab.PoolCount
             );
             pools.Add(prefab.ProjectilePrefab, pool);
+            return (pool, prefab.PoolCount);
         }
 
-        private IProjectile OnCreate(ProjectilePoolConfig.BasicPoolConfig poolConfig, Transform poolParent, ObjectPool<IProjectile> pool)
+        private async void PrewarmPool(ObjectPool<IProjectile> pool, int poolCount)
+        {
+            var tempList = new List<IProjectile>();
+            for (int i = 0; i < poolCount; i++)
+            {
+                var projectile = pool.Get();
+                tempList.Add(projectile);
+            }
+
+            await Task.Yield();
+            for (int i = 0; i < poolCount; i++)
+            {
+                pool.Release(tempList[i]);
+            }
+        }
+
+        private IProjectile OnCreate(ProjectilePoolConfig.Config poolConfig, Transform poolParent, ObjectPool<IProjectile> pool)
         {
             var projectile = GameObject.Instantiate(poolConfig.ProjectilePrefab, poolParent, false);
             if (projectile.TryGetComponent<IProjectile>(out var projectileComponent))
@@ -72,6 +91,25 @@ namespace JGM.Gameplay.Turrets.Projectiles
 
             Debug.LogWarning($"No available pool item for prefab {projectile.name}");
             return null;
+        }
+
+        public void Restart()
+        {
+            for (int i = 0; i < rootParent.childCount; i++)
+            {
+                var poolParent = rootParent.GetChild(i);
+
+                for (int j = 0; j < poolParent.childCount; j++)
+                {
+                    var projectileGO = poolParent.GetChild(j).gameObject;
+
+                    if (projectileGO.activeSelf &&
+                        projectileGO.TryGetComponent<IProjectile>(out var projectile))
+                    {
+                        projectile.Release();
+                    }
+                }
+            }
         }
     }
 }

@@ -77,5 +77,10 @@ namespace JGM.Gameplay.Turrets.Projectiles
                 pool.Release(this);
             }
         }
+
+        public void Release()
+        {
+            pool.Release(this);
+        }
     }
 }

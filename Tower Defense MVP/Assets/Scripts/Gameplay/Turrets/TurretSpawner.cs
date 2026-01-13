@@ -1,5 +1,7 @@
 ﻿using JGM.Gameplay.Creeps;
 using JGM.Gameplay.Turrets.Projectiles;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace JGM.Gameplay.Turrets
@@ -8,7 +10,9 @@ namespace JGM.Gameplay.Turrets
     {
         private CreepSpawner creepSpawner;
         private ProjectilePool projectilePool;
+
         private Transform turretsParent;
+        private List<ITurret> activeTurrets = new();
 
         public TurretSpawner(CreepSpawner creepSpawner, ProjectilePool projectilePool)
         {
@@ -21,7 +25,18 @@ namespace JGM.Gameplay.Turrets
             turretsParent ??= new GameObject("Turrets").transform;
             var spawnedTurret = GameObject.Instantiate(turret.GameObject, turretsParent, false);
             spawnedTurret.transform.position = position;
-            spawnedTurret.GetComponent<ITurret>().Initialize(creepSpawner, projectilePool);
+            var turretComponent = spawnedTurret.GetComponent<ITurret>();
+            turretComponent.Initialize(creepSpawner, projectilePool);
+            activeTurrets.Add(turretComponent);
+        }
+
+        public void Restart()
+        {
+            foreach (var turret in activeTurrets)
+            {
+                GameObject.Destroy(turret.GameObject);
+            }
+            activeTurrets.Clear();
         }
     }
 }

@@ -9,5 +9,13 @@ namespace JGM.Gameplay
         {
             return StartCoroutine(coroutine);
         }
+
+        public void Stop(IEnumerator coroutine)
+        {
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+        }
     }
 }

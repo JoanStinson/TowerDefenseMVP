@@ -9,5 +9,6 @@ namespace JGM.Gameplay.Turrets.Projectiles
 
         void SetPool(ObjectPool<IProjectile> pool);
         void Initialize(Vector3 position, Transform target);
+        void Release();
     }
 }

@@ -17,6 +17,7 @@ namespace JGM.Gameplay.Waves
         private CoroutineService coroutineService;
         private Wave currentWave;
         private int currentWaveIndex;
+        private IEnumerator startWaveCoroutine;
 
         public WavesController(WaveList waveList)
         {
@@ -24,14 +25,14 @@ namespace JGM.Gameplay.Waves
             var serviceLocator = ServiceLocator.Instance;
             creepSpawner = serviceLocator.Get<CreepSpawner>();
             coroutineService = serviceLocator.Get<CoroutineService>();
+            creepSpawner.OnAllCreepsKilled += OnWaveCleared;
         }
 
         public void StartGame()
         {
-            currentWaveIndex = 0;
-            currentWave = waveList.Waves[currentWaveIndex];
-            coroutineService.Run(StartWave());
-            creepSpawner.OnAllCreepsKilled += OnWaveCleared;
+            Restart();
+            startWaveCoroutine = StartWave();
+            coroutineService.Run(startWaveCoroutine);
         }
 
         private IEnumerator StartWave()
@@ -80,6 +81,13 @@ namespace JGM.Gameplay.Waves
         private bool ClearedLastWave()
         {
             return currentWaveIndex >= waveList.Waves.Length - 1;
+        }
+
+        public void Restart()
+        {
+            coroutineService.Stop(startWaveCoroutine);
+            currentWaveIndex = 0;
+            currentWave = waveList.Waves[currentWaveIndex];
         }
     }
 }

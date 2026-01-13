@@ -1,4 +1,7 @@
-﻿using JGM.Gameplay.Creeps;
+﻿using JGM.Gameplay.Base;
+using JGM.Gameplay.Creeps;
+using JGM.Gameplay.Turrets;
+using JGM.Gameplay.Turrets.Projectiles;
 using JGM.Gameplay.Wallet;
 using JGM.Gameplay.Waves;
 using System;
@@ -10,28 +13,41 @@ namespace JGM.Gameplay
     {
         public event Action OnGameStart;
 
-        private PlayerWallet playerWallet;
+        private PlayerBase playerBase;
+        private CreepSpawner creepSpawner;
+        private ProjectilePool projectilePool;
+        private TurretSpawner turretSpawner;
         private WavesController wavesController;
+        private PlayerWallet playerWallet;
 
         private void Start()
         {
             var serviceLocator = ServiceLocator.Instance;
-            playerWallet = serviceLocator.Get<PlayerWallet>();
+            playerBase = serviceLocator.Get<PlayerBase>();
+            creepSpawner = serviceLocator.Get<CreepSpawner>();
+            projectilePool = serviceLocator.Get<ProjectilePool>();
+            turretSpawner = serviceLocator.Get<TurretSpawner>();
             wavesController = serviceLocator.Get<WavesController>();
-            var creepSpawner = serviceLocator.Get<CreepSpawner>();
-            creepSpawner.OnCreepKill += OnCreepKill;
+            playerWallet = serviceLocator.Get<PlayerWallet>();
+            creepSpawner.OnCreepKill += (creep) => playerWallet.AddCoins(creep.CoinReward);
             StartGame();
-        }
-
-        private void OnCreepKill(ICreep creep)
-        {
-            playerWallet.AddCoins(creep.CoinReward);
         }
 
         private void StartGame()
         {
             wavesController.StartGame();
             OnGameStart?.Invoke();
+        }
+
+        public void RestartGame()
+        {
+            playerBase.Restart();
+            creepSpawner.Restart();
+            projectilePool.Restart();
+            turretSpawner.Restart();
+            wavesController.Restart();
+            playerWallet.Restart();
+            StartGame();
         }
     }
 }

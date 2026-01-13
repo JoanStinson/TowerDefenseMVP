@@ -15,8 +15,10 @@ namespace JGM.Gameplay.Creeps
         private Transform[] spawnPoints;
         private PlayerBase playerBase;
         private CoroutineService coroutineService;
+
         private List<ICreep> activeCreeps = new();
         private Transform creepsParent;
+        private IEnumerator spawnCoroutine;
         private int totalCreepsToSpawn;
         private int activeCreepsSpawned;
 
@@ -33,7 +35,8 @@ namespace JGM.Gameplay.Creeps
             creepsParent ??= new GameObject("Creeps").transform;
             totalCreepsToSpawn = creeps.Count;
             activeCreepsSpawned = 0;
-            coroutineService.Run(SpawnCreeps(creeps, delayBetweenCreeps));
+            spawnCoroutine = SpawnCreeps(creeps, delayBetweenCreeps);
+            coroutineService.Run(spawnCoroutine);
         }
 
         private IEnumerator SpawnCreeps(IReadOnlyList<ICreep> creeps, float delayBetweenCreeps)
@@ -74,6 +77,20 @@ namespace JGM.Gameplay.Creeps
             {
                 yield return creep;
             }
+        }
+
+        public void Restart()
+        {
+            coroutineService.Stop(spawnCoroutine);
+
+            foreach (var creep in activeCreeps)
+            {
+                GameObject.Destroy(creep.GameObject);
+            }
+            activeCreeps.Clear();
+
+            totalCreepsToSpawn = 0;
+            activeCreepsSpawned = 0;
         }
     }
 }

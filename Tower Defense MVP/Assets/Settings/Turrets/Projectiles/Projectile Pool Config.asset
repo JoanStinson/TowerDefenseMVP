@@ -15,7 +15,7 @@ MonoBehaviour:
   Configs:
   - ProjectilePrefab: {fileID: 2447914256981519622, guid: 3f7b784e28a20644baea6ab62ebe034f,
       type: 3}
-    PoolCount: 20
+    PoolCount: 25
   - ProjectilePrefab: {fileID: 1780768560215073876, guid: 68ef00441bb1a084db54392c624ac678,
       type: 3}
-    PoolCount: 20
+    PoolCount: 10

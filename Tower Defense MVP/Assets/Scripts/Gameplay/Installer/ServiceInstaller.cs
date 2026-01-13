@@ -15,9 +15,9 @@ namespace JGM.Gameplay.Installer
         [SerializeField] private Transform[] creepSpawnPoints;
 
         [Header("Service Instances")]
-        [SerializeField] private PlayerBase playerBase;
         [SerializeField] private Camera mainCamera;
         [SerializeField] private CoroutineService coroutineService;
+        [SerializeField] private PlayerBase playerBase;
 
         private void Awake()
         {
@@ -28,10 +28,10 @@ namespace JGM.Gameplay.Installer
 
         private void InstallMonoServices(ServiceLocator serviceLocator)
         {
-            playerBase.Initialize(gameConfig.PlayerStartHealth);
-            serviceLocator.Register<PlayerBase>(playerBase);
             serviceLocator.Register<Camera>(mainCamera);
             serviceLocator.Register<CoroutineService>(coroutineService);
+            playerBase.Initialize(gameConfig.PlayerStartHealth);
+            serviceLocator.Register<PlayerBase>(playerBase);
         }
 
         private void InstallServices(ServiceLocator serviceLocator)

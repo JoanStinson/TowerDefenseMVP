@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Game Config
   m_EditorClassIdentifier: JGM.Gameplay:JGM.Gameplay:GameConfig
   WaveList: {fileID: 11400000, guid: 7898fa757a07baa4196cb14532ee4154, type: 2}
+  ProjectilePoolConfig: {fileID: 11400000, guid: 5d5329f42ca966b43923c0e1411a352c,
+    type: 2}
   PlayerStartHealth: 30
   PlayerStartCoins: 50

@@ -1,6 +1,7 @@
 ﻿using JGM.Gameplay.Base;
 using JGM.Gameplay.Creeps;
 using JGM.Gameplay.Turrets;
+using JGM.Gameplay.Turrets.Projectiles;
 using JGM.Gameplay.Wallet;
 using JGM.Gameplay.Waves;
 using UnityEngine;
@@ -37,7 +38,9 @@ namespace JGM.Gameplay.Installer
         {
             var creepSpawner = new CreepSpawner(creepSpawnPoints);
             serviceLocator.Register<CreepSpawner>(creepSpawner);
-            serviceLocator.Register<TurretSpawner>(new TurretSpawner(creepSpawner));
+            var projectilePool = new ProjectilePool(gameConfig.ProjectilePoolConfig);
+            serviceLocator.Register<ProjectilePool>(projectilePool);
+            serviceLocator.Register<TurretSpawner>(new TurretSpawner(creepSpawner, projectilePool));
             serviceLocator.Register<WavesController>(new WavesController(gameConfig.WaveList));
             serviceLocator.Register<PlayerWallet>(new PlayerWallet(gameConfig.PlayerStartCoins));
         }

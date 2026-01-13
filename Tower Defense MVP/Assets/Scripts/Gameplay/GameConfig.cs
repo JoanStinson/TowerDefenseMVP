@@ -1,4 +1,5 @@
-﻿using JGM.Gameplay.Waves;
+﻿using JGM.Gameplay.Turrets.Projectiles;
+using JGM.Gameplay.Waves;
 using UnityEngine;
 
 namespace JGM.Gameplay
@@ -7,6 +8,7 @@ namespace JGM.Gameplay
     public class GameConfig : ScriptableObject
     {
         public WaveList WaveList;
+        public ProjectilePoolConfig ProjectilePoolConfig;
         public int PlayerStartHealth = 30;
         public int PlayerStartCoins = 50;
     }

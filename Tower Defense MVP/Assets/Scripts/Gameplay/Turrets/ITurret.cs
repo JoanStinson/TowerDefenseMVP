@@ -1,4 +1,5 @@
 ﻿using JGM.Gameplay.Creeps;
+using JGM.Gameplay.Turrets.Projectiles;
 using UnityEngine;
 
 namespace JGM.Gameplay.Turrets
@@ -7,6 +8,6 @@ namespace JGM.Gameplay.Turrets
     {
         GameObject GameObject { get; }
 
-        void Initialize(CreepSpawner creepSpawner);
+        void Initialize(CreepSpawner creepSpawner, ProjectilePool projectilePool);
     }
 }

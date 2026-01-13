@@ -8,6 +8,7 @@ namespace JGM.Gameplay.Turrets.Projectiles
     public class ProjectileConfig : ScriptableObject
     {
         public float MoveSpeed = 10f;
+        public float DurationToDestroy = 7f;
         public List<CombatEffectConfig> Effects;
     }
 }

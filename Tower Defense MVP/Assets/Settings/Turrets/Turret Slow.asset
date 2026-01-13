@@ -15,4 +15,4 @@ MonoBehaviour:
   ProjectilePrefab:
     _underlyingValue: {fileID: 5395560854922777591, guid: 68ef00441bb1a084db54392c624ac678,
       type: 3}
-  ShootSpeed: 2
+  ShootSpeed: 4

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Pool;
 
 namespace JGM.Gameplay.Turrets.Projectiles
 {
@@ -6,6 +7,7 @@ namespace JGM.Gameplay.Turrets.Projectiles
     {
         GameObject GameObject { get; }
 
-        void Initialize(Transform target);
+        void SetPool(ObjectPool<IProjectile> pool);
+        void Initialize(Vector3 position, Transform target);
     }
 }

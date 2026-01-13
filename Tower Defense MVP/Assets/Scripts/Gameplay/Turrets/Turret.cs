@@ -13,11 +13,13 @@ namespace JGM.Gameplay.Turrets
         private TurretConfig config;
 
         private CreepSpawner creepSpawner;
+        private ProjectilePool projectilePool;
         private bool turnedOn;
 
-        public void Initialize(CreepSpawner creepSpawner)
+        public void Initialize(CreepSpawner creepSpawner, ProjectilePool projectilePool)
         {
             this.creepSpawner = creepSpawner;
+            this.projectilePool = projectilePool;
             turnedOn = true;
             StartCoroutine(Shoot());
         }
@@ -26,9 +28,17 @@ namespace JGM.Gameplay.Turrets
         {
             while (turnedOn)
             {
-                var closestTarget = GetClosestTarget();
-                SpawnProjectile(closestTarget);
                 yield return new WaitForSeconds(config.ShootSpeed);
+                SpawnProjectile(GetClosestTarget());
+            }
+        }
+
+        private void SpawnProjectile(Transform target)
+        {
+            if (target != null)
+            {
+                var projectile = projectilePool.Get(config.ProjectilePrefab.Value.GameObject);
+                projectile.Initialize(transform.position, target);
             }
         }
 
@@ -51,16 +61,6 @@ namespace JGM.Gameplay.Turrets
             }
 
             return closestTarget;
-        }
-
-        private void SpawnProjectile(Transform target)
-        {
-            if (target != null)
-            {
-                var spawnedProjectile = Instantiate(config.ProjectilePrefab.Value.GameObject, null, false);
-                spawnedProjectile.transform.position = transform.position;
-                spawnedProjectile.GetComponent<IProjectile>().Initialize(target);
-            }
         }
     }
 }

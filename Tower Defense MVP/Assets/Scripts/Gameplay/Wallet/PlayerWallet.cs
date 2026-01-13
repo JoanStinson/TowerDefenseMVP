@@ -12,6 +12,11 @@ namespace JGM.Gameplay.Wallet
 
         public PlayerWallet(int coins)
         {
+            if (coins < 0)
+            {
+                coins = 0;
+            }
+
             this.coins = coins;
             startingCoins = coins;
         }
@@ -25,6 +30,10 @@ namespace JGM.Gameplay.Wallet
         public void RemoveCoins(int amount)
         {
             coins -= amount;
+            if (coins < 0)
+            {
+                coins = 0;
+            }
             OnWalletChange?.Invoke(coins);
         }
 

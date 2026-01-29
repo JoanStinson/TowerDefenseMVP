@@ -55,6 +55,22 @@ restarting — all within a single Play session. Ensure that game state is corre
 (e.g., enemies cleared, towers reset, resources reinitialized) without relying on manually
 stopping and starting the Unity Editor.
 
+## 👾 How to Add a New Enemy
+1. Create a new prefab with a root script inheriting from ICreep
+2. Add a new creep config to the prefab
+3. Attach the prefab to a wave asset
+<p align="center">
+  <img src="https://github.com/JoanStinson/TowerDefenseMVP/blob/main/add enemy.PNG">
+</p>
+
+## 🤖 How to Add a New Turret
+1. Create a new prefab with a root script inheriting from ITurret
+2. Add a new turret config to the prefab
+3. Attach the prefab to the turret list
+<p align="center">
+  <img src="https://github.com/JoanStinson/TowerDefenseMVP/blob/main/add turret.PNG">
+</p>
+
 ## 🔍 Unit Tests
 <p align="center">
   <img src="https://github.com/JoanStinson/TowerDefenseMVP/blob/main/tests.PNG">

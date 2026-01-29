@@ -1278,9 +1278,9 @@ MonoBehaviour:
   - {fileID: 1721398816}
   - {fileID: 741994776}
   - {fileID: 1526528081}
-  playerBase: {fileID: 1672227037}
   mainCamera: {fileID: 896869053}
   coroutineService: {fileID: 1745249239}
+  playerBase: {fileID: 1672227037}
 --- !u!114 &1745249239
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: f5ab71ef33760394189e4a398ed52a28, type: 3}
   m_Name: Game Config
-  m_EditorClassIdentifier: JGM.Gameplay:JGM.Gameplay:GameConfig
+  m_EditorClassIdentifier: 
   WaveList: {fileID: 11400000, guid: 7898fa757a07baa4196cb14532ee4154, type: 2}
   ProjectilePoolConfig: {fileID: 11400000, guid: 5d5329f42ca966b43923c0e1411a352c,
     type: 2}
